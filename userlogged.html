@@ -1,0 +1,202 @@
+<?php
+session_start();
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Bem-vindo | TelcoSms</title>
+    <link href="css/login_css.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+<body>
+
+<header id="header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-4">
+                    <div class="top-number"><p><i class="fa fa-phone-square"></i>+244 918 000 000</p></div>
+                </div>
+                <div class="col-sm-6 col-xs-8">
+                    <div class="social">
+                        <ul class="social-share">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        </ul>
+                        <div class="search">
+                            <form role="form">
+                                <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                                <i class="fa fa-search"></i>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.container-->
+    </div><!--/.top-bar-->
+
+    <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="/images/logotelco.png" alt="logo"></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                    <li><a href="index_logged.html">TelcoSms</a></li>
+                    <li><a href="services_logged.html">Serviços</a></li>
+                    <li><a href="tableprices_logged.html">Pacotes</a></li>
+                    <li><a href="about-us_logged.html">Quem Somos</a></li>
+                    <li><a href="contact-us_logged.html">Contactos</a></li>
+                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li class="active"><a href="logout.php">logout</a></li>
+                </ul>
+            </div>
+        </div><!--/.container-->
+    </nav><!--/nav-->
+</header><!--/header-->
+
+
+<div class="container profile">
+    <div class="row">
+        <div class="span12">
+            <div class="well well-small clearfix">
+                <div class="row-fluid">
+                    <div class="span2">
+                        <img src="http://www.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=125"
+                             class="img-polaroid"/>
+                    </div>
+                    <div class="span4">
+                        <h2><?php echo $_SESSION['login_username']?></h2>
+                        <ul class="unstyled">
+                            <li><i class="fa fa-phone"></i><?php echo $_SESSION['telefone']?></li>
+                            <li><i class="fa fa-inbox"></i><?php echo $_SESSION['email']?></li>
+                            <li><i class="fa fa-tasks"></i><?php echo $_SESSION['clienteType']?></li>
+                            <li><i class="fa fa-magic"></i> reference : xasarasdasdasd123</li>
+                            <li><i class="fa fa-edit"></i><a href="edit.html"> edit profile</a></li>
+                        </ul>
+                    </div>
+                    <div class="span6">
+                        <ul class="inline stats">
+                            <li>
+                                <span>275</span>
+                                sms enviadas
+                            </li>
+                            <li>
+                                <span>354</span>
+                                sms disponiveis
+                            </li>
+                            <li>
+                                <span>186</span>
+                                contactos
+                            </li>
+                        </ul>
+                        <div><!--/span6-->
+                        </div><!--/row-->
+                    </div>
+                    <!--Body content-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="contact-page">
+    <div class="container">
+        <div class="center">
+            <h2>Envie Mensagem</h2>
+            <p-new class="lead-new">Entre em contacto com os seus clientes</p-new>
+        </div>
+        <div class="row">
+            <div class="status alert alert-success" style="display: none"></div>
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="input-group">
+                    <form id="send-message-form" name="sendsms" name="contact-form" method="post"
+                          action="sendtelcosms.php">
+                        <div class="input-group">
+                            <label>Origem *</label>
+                            <input type="text" value=" " class="form-control" required="required"/>
+                        </div>
+                        <div class="input-group">
+                            <label>Contactos *</label>
+                            <input type="text" name="recipient" class="form-control" required="required"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Messagem *</label>
+                            <textarea name="message" id="sms_to_send" required="required"
+                                      class="input-group form-control"
+                                      rows="8"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="send_sms" class="btn btn-primary btn-lg" required="required">
+                                Enviar
+                            </button>
+                        </div>
+                </div>
+                </form>
+            </div><!-- /input-group -->
+        </div>
+    </div>
+    </div>
+    </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+</section>
+
+
+<footer id="footer" class="midnight-blue">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                © 2016 <a target="_blank" href="http://kawakuticode.com/">kawakuticode</a>. All Rights Reserved.
+            </div>
+            <div class="col-sm-6">
+                <ul class="pull-right">
+                    <li><a href="#">TelcoSms</a></li>
+                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="contact-us.html">Contactos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer><!--/#footer-->
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/jquery.isotope.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/wow.min.js"></script>
+
+
+</body>
+</html>
