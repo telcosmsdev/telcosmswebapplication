@@ -190,7 +190,7 @@ body > section {
 
 .top-bar {
   padding: 10px 0;
-  background: #191919;
+  background: #47a0ca;
   border-bottom: 1px solid #222;
   line-height: 28px;
 }
@@ -271,7 +271,7 @@ input.search-form:hover {
 .navbar {
   border-radius: 0;
   margin-bottom: 0;
-  background: #151515;
+  background: rgb(0, 0, 0);
   padding: 15px 0;
   padding-bottom: 0;
 }
