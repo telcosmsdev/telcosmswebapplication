@@ -315,7 +315,7 @@ input.search-form:hover {
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #1a66ff;
+  background: #47a0ca;
   color: #fff;
 }
 
@@ -345,7 +345,7 @@ input.search-form:hover {
 .navbar-inverse .navbar-nav .dropdown-menu > li:hover > a,
 .navbar-inverse .navbar-nav .dropdown-menu > li:focus > a,
 .navbar-inverse .navbar-nav .dropdown-menu > li.active > a {
-  background-color: #1a66ff;
+  background: #47a0ca;
   color: #fff;
 }
 
@@ -392,7 +392,7 @@ input.search-form:hover {
 
 #main-slider .carousel .btn-slide {
   padding: 8px 20px;
-  background: #1a66ff;
+  background: #47a0ca;
   color: #fff;
   border-radius: 4px;
   margin-top: 25px;
@@ -440,7 +440,7 @@ input.search-form:hover {
 #main-slider .next {
   position: absolute;
   top: 50%;
-  background-color: #1a66ff;
+  background: #47a0ca;
   color: #fff;
   display: inline-block;
   margin-top: -25px;
@@ -455,7 +455,7 @@ input.search-form:hover {
 
 #main-slider .prev:hover,
 #main-slider .next:hover {
-  background-color: #000;
+  background-color: transparent;
 }
 
 #main-slider .prev {
@@ -489,9 +489,9 @@ input.search-form:hover {
 #main-slider .carousel-indicators .active{
   width: 20px;
   height: 20px;
-  background-color: #1a66ff;
+  background: #47a0ca;
    margin: 0 15px 0 0;
-   border: 1px solid #1a66ff;
+   border: 1px solid #47a0ca;
    position: relative;
 }
 
@@ -501,8 +501,8 @@ input.search-form:hover {
   width: 24px;
   height: 24px;
   border-radius: 100%;
-  background: #1a66ff;
-  border: 1px solid #1a66ff;
+  background: #47a0ca;
+  border: 1px solid #47a0ca;
   left: -3px;
   top: -3px;
 }

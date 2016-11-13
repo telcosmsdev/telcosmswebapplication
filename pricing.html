@@ -72,12 +72,12 @@
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">TelcoSms</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#modal1">Log In</a></li>
                     <li><a href="services.html">Serviços</a></li>
                     <li class="active"><a href="tableprices.html">Pacotes</a></li>
                     <li><a href="about-us.html">Quem Somos</a></li>
                     <li><a href="contact-us.html">Contactos</a></li>
-                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support.html">Ajuda e Suporte</a>
+                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li></li>
                 </ul>
             </div>
         </div><!--/.container-->
@@ -85,20 +85,102 @@
 
 </header><!--/header-->
 
-<!-- login -->
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <div class="modal-content modal-popup">
-            <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-            <h7>Log In</h7>
-            <form action="" class="popup-form">
-                <input type="text" class="form-control form-white" required="required" placeholder="Username">
-                <input type="password" class="form-control form-white" required="required" placeholder="Password">
-                <button type="submit" class="btn btn-submit">Entrar</button>
-            </form>
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <img class="img-circle" id="img_logo" src="images/loginlogo.png">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <!-- Begin # DIV Form -->
+            <div id="div-forms">
+                <!-- Begin # Login Form -->
+                <form id="login-form" action ="login.php" method="post">
+                    <div class="modal-body">
+                        <div id="div-login-msg">
+                            <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <span id="text-login-msg">Type your username and password.</span>
+                        </div>
+                        <input name="login_username" class="form-control" type="text" placeholder="Username" required>
+                        <input name="login_password" class="form-control" type="password" placeholder="Password" required>
+                        <!--<div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                        </div>
+                        <div>
+                            <button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                            <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End # Login Form -->
+
+                <!-- Begin | Lost Password Form -->
+                <form id="lost-form" action="recover_password.php" style="display:none;">
+                    <div class="modal-body">
+                        <div id="div-lost-msg">
+                            <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <span id="text-lost-msg">Type your e-mail.</span>
+                        </div>
+                        <input id="lost_email" class="form-control" type="text" placeholder="E-Mail (type ERROR for error effect)" required>
+                    </div>
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+                        </div>
+                        <div>
+                            <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>
+                            <button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End | Lost Password Form -->
+
+                <!-- Begin | Register Form -->
+                <form id="register-form" method="post" action="register.php" style="display:none;">
+                    <br class="modal-body">
+                    <div id="div-register-msg">
+                        <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                        <span id="text-register-msg">Criar conta</span>
+                    </div>
+                    <input name="register_name"     class="form-control" type="text" placeholder="Nome" required>
+                    <input name="register_apelido"  class="form-control" type="text" placeholder="Apelido" required>
+                    <input name="register_username" class="form-control" type="text" placeholder="username" required>
+                    <input name="register_password" class="form-control" type="password" placeholder="password" required>
+                    <input name="register_telefone" class="form-control" type="number" placeholder="telefone" required>
+                    <input name="register_email"    class="form-control"    type="email" placeholder="E-Mail" required>
+
+
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" name="register_btn" class="btn btn-primary btn-lg btn-block">Criar
+                            </button>
+
+                            <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
+                            <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End | Register Form -->
+
+            </div>
+            <!-- End # DIV Form -->
+
         </div>
     </div>
 </div>
+<!-- END # MODAL LOGIN -->
+
 
 <section class="pricing-page">
     <div class="container">
