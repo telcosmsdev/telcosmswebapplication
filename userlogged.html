@@ -3,7 +3,7 @@ session_start();
 
 function typeClienteToString($type){
 
-echo ($type != 0 ) ? "corporative" : "standard";
+echo ($type != 0 ) ? "Corporative" : "Standard";
 
 
 }
@@ -140,6 +140,10 @@ echo ($type != 0 ) ? "corporative" : "standard";
         </div>
     </div>
 </div>
+
+
+
+
 <section id="contact-page">
     <div class="container">
         <div class="center">
@@ -149,17 +153,18 @@ echo ($type != 0 ) ? "corporative" : "standard";
         <div class="row contact-wrap">
             <div class="status alert alert-success" style="display: none"></div>
 
-            <form id="import-contacts" name="sendsms" name="import-contect" method="post"
+            <form id="import-contacts" class="contact-form" name="import-contect" method="post"
                   action="importfile.php" enctype="multipart/form-data">
                 <div class="col-sm-4 col-sm-offset-4">
                     <div class="form-group">
                         <label>Origem *</label>
-                        <input type="text" value=" <?php echo typeClienteToString($_SESSION['clienteType'])?>"
+                        <input style="height: 40px" type="text" value=" <?php echo typeClienteToString($_SESSION['clienteType'])?>"
                                class="form-control" required="required" readonly/>
                     </div>
+
                     <div class="form-group">
                         <label>Contactos *</label>
-                        <input type="number" class="form-control"/>
+                        <input style="height: 40px" type="number" class="form-control"/>
                     </div>
 
                     <div class="form-group">

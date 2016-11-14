@@ -1,6 +1,6 @@
 <?php
 
-$link = mysqli_connect("localhost", "root", "", "telco_test_connection");
+$link = mysqli_connect("localhost", "root", "", "telco_sms_db");
 
 if (!$link) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -9,5 +9,5 @@ if (!$link) {
     exit;
 }
 
-/*mysqli_close($link);*/
+
 ?>
