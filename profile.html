@@ -83,13 +83,14 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
 
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="index_logged.html">TelcoSms</a></li>
+                    <li><a href="index_logged.html">TelcoSMS</a></li>
                     <li><a href="services_logged.html">Serviços</a></li>
                     <li><a href="tableprices_logged.html">Pacotes</a></li>
                     <li><a href="about-us_logged.html">Quem Somos</a></li>
                     <li><a href="contact-us_logged.html">Contactos</a></li>
                     <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
-                    <li class="active"><a href="logout.php">logout</a></li>
+                    <li class="active"><a href="profile.html">Profile</a></li>
+                    <li><a href="logout.php">logout</a></li>
                 </ul>
             </div>
         </div><!--/.container-->
@@ -142,8 +143,6 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
 </div>
 
 
-
-
 <section id="contact-page">
     <div class="container">
         <div class="center">
@@ -158,7 +157,8 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
                 <div class="col-sm-4 col-sm-offset-4">
                     <div class="form-group">
                         <label>Origem *</label>
-                        <input style="height: 40px" type="text" value=" <?php echo typeClienteToString($_SESSION['clienteType'])?>"
+                        <input style="height: 40px" type="text"
+                               value=" <?php echo typeClienteToString($_SESSION['clienteType'])?>"
                                class="form-control" required="required" readonly/>
                     </div>
 
@@ -167,15 +167,16 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
                         <input style="height: 40px" type="number" class="form-control"/>
                     </div>
 
-                    <div class="form-group">
-                        <button style="float:right" name="import_contacts" class="btn btn-primary btn-lg"
-                                required="required">
-                            importar contactos
+                    <div style="float:right" class="form-group dropdown">
+                        <button style="float:right" type="submit" name="submit" class="btn btn-primary btn-lg"
+                                required="required">Adicionar Contactos
+                            <i class="fa fa-angle-down"></i>
+                            <ul style="float:right" class="dropdown-menu">
+                                <li><a href="#">base de dados</a></li>
+                                <li><a href="#">meus contactos</a></li>
+                                <li><a href="#">importar ficheiro .xls .txt</a></li>
+                            </ul>
                         </button>
-
-                    </div>
-                    <div class="form-group">
-                        <label style="float:left" class="control-label"> csv , txt permitido </label>
                     </div>
                 </div>
             </form>
@@ -188,10 +189,13 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
                     <div class="form-group">
                         <div class="form-group">
                             <label>Messagem *</label>
-                            <textarea name="message" id="message" required="required" class="form-control" rows="8"></textarea>
+                            <textarea name="message" id="message" required="required" class="form-control"
+                                      rows="8"></textarea>
                         </div>
                         <div class="form-group">
-                            <button style="float: right" type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Enviar</button>
+                            <button style="float: right" type="submit" name="submit" class="btn btn-primary btn-lg"
+                                    required="required">Enviar
+                            </button>
                         </div>
 
                     </div>
@@ -199,8 +203,6 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
             </form>
         </div>
     </div>
-
-
 
 
     </div><!-- /.col-lg-4 -->

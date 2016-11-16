@@ -1,9 +1,6 @@
 <?php
 ob_start();
 session_start();
-/*if( isset($_SESSION['user'])!="" ){
-    header("Location: home.php");
-}*/
 require_once('/Applications/XAMPP/htdocs/telcosmswp/connect_db.php');
 
 
@@ -25,13 +22,13 @@ if (isset($_POST['register_btn']) ) {
     $username_ = htmlspecialchars($username_);
 
 
-    $pass = trim($_POST['register_password']);
-    $pass = strip_tags($pass);
-    $pass = htmlspecialchars($pass);
+    $password_ = trim($_POST['register_password']);
+    $password_ = strip_tags($password_);
+    $password_ = htmlspecialchars($password_);
 
-    $telefone = trim($_POST['register_telefone']);
-    $telefone = strip_tags($telefone);
-    $telefone  = htmlspecialchars($telefone);
+    $telemovel = trim($_POST['register_telefone']);
+    $telemovel = strip_tags($telemovel);
+    $telemovel  = htmlspecialchars($telemovel);
 
 
     $email = trim($_POST['register_email']);
@@ -41,27 +38,29 @@ if (isset($_POST['register_btn']) ) {
 
 
     // password encrypt using SHA256();
-   $password = hash('sha256', $pass);
+   $password_encripted = hash('sha256', $password_);
 
-    // if there's no error, continue to signup
-/*    if( !$error ) {*/
-        //$fullname = $name."  ".$apelido;
-        $query = "INSERT INTO cliente (nomeCompleto, username, password, email, telefone, clienteType) 
-                           VALUES('$name', '$username_','$password','$email','$telefone', 0);";
+    $name = $name."  ".$apelido;
 
-    $res = mysqli_query($link, $query);
+        $query = "INSERT INTO cliente (nome_cliente, username, password, email, telemovel, cliente_referencia) 
+                           VALUES('$name', '$username_','$password_encripted','$email','$telemovel', NULL);";
+         $res = mysqli_query($link, $query);
 
         if ($res) {
             $errTyp = "success";
             $errMSG = "Successfully registered, you may login now";
+
             header('Location: http://localhost/telcosmswp/sucessfull.html');
 
-        /*    unset($name);
+            unset($name);
             unset($email);
-            unset($pass);*/
+            unset($password_encripted);
+            unset($username_);
+            unset($telemovel);
+
         } else {
 
-            echo "danger".$res;
+            echo "danger ".$res;
             $errTyp = "danger";
             $errMSG = "Something went wrong, try again later...";
 

@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title> Resgistrado | TelcoSms</title>
+    <title>Pacotes | TelcoSms</title>
+
+    <!-- core pricing.html -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -23,7 +26,8 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
-<body class="homepage">
+<body>
+
 <header id="header">
     <div class="top-bar">
         <div class="container">
@@ -52,7 +56,6 @@
         </div><!--/.container-->
     </div><!--/.top-bar-->
 
-
     <nav class="navbar navbar-inverse" role="banner">
         <div class="container">
             <div class="navbar-header">
@@ -70,10 +73,10 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">TelcoSms</a></li>
                     <li><a href="services.html">Serviços</a></li>
-                    <li><a href="tableprices.html">Pacotes</a></li>
+                    <li class="active"><a href="tableprices.html">Pacotes</a></li>
                     <li><a href="about-us.html">Quem Somos</a></li>
                     <li><a href="contact-us.html">Contactos</a></li>
-                    <li class="active"><a href="sucessfull.html">Registrado</a></li>
+                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li>
                 </ul>
             </div>
@@ -81,8 +84,6 @@
     </nav><!--/nav-->
 
 </header><!--/header-->
-
-
 
 <!-- BEGIN # MODAL LOGIN -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
@@ -178,22 +179,69 @@
 </div>
 <!-- END # MODAL LOGIN -->
 
-<section id="sucess_registered" class="container text-center">
-    <h1>Sucessfull registered</h1>
-    <p>ja pode fazer login com o teu utilizador e password</p>
-    <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#login-modal">clique aqui para login</a>
-</section><!--/#error-->
+<section class="pricing-page">
+    <div class="container">
+        <div class="center wow fadeInDown">
+            <h2>DETALHES DOS PACOTES BASIC</h2>
+            <p class="lead">Temos pacotes para todas necessidades e as melhores ofertas do mercado</p>
+        </div>
+        <div class="pricing-area text-center">
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-1 plan price-one wow fadeInDown">
+                    <ul>
+                        <li class="heading-one">
+                            <h1>Basic</h1>
+                            <span>600.000 Kzs</span>
+                        </li>
+                        <li>100.000 SMS</li>
+                        <li>6kzs por SMS</li>
+                        <li>Interface de Envio</li>
+                        <li>24/7 Suporte Tecnico</li>
+                        <li>Sem Acesso a Base De Dados</li>
+                        <li class="plan-action">
+                            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Pagar</a>
+                        </li>
+                    </ul>
+                </div>
 
+                <div class="col-sm-5 plan price-six wow fadeInDown">
+                    <img src="images/ribon_one.png">
+                    <ul>
+                        <li class="heading-six">
+                            <h1>Basic+</h1>
+                            <span>900.000 Kzs</span>
+                        </li>
+                        <li>100.000 SMS</li>
+                        <li>9kzs por SMS</li>
+                        <li>Interface de Envio</li>
+                        <li>24/7 Suporte Tecnico</li>
+                        <li>Acesso a Base De Dados</li>
+                        <li class="plan-action">
+                            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Pagar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--/pricing-area-->
+        </div><!--/container-->
+</div>
+</section><!--/pricing-page-->
 
+<section class="pricing-page">
+    <div class="container">
+        <div class="center wow fadeInDown">
+            <p class="lead"> *O imposto de consumo não está incluído.</p>
+        </div>
+    </div>
+</section>
 <footer id="footer" class="midnight-blue">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                © 2016 <a target="_blank" href="http://kawakuticode.com/" >kawakuticode</a>. All Rights Reserved.
+                © 2016 <a target="_blank" href="http://kawakuticode.com/">kawakuticode</a>. All Rights Reserved.
             </div>
             <div class="col-sm-6">
                 <ul class="pull-right">
-                    <li><a href="#">TelcoSms</a></li>
+                    <li><a href="index.html">TelcoSMS</a></li>
                     <li><a href="help-support.html">Ajuda e Suporte</a></li>
                     <li><a href="contact-us.html">Contactos</a></li>
                 </ul>
@@ -201,12 +249,15 @@
         </div>
     </div>
 </footer><!--/#footer-->
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/jquery.isotope.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/wow.min.js"></script>
 
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript">
+        $('.carousel').carousel()
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
 </body>
 </html>
