@@ -1,15 +1,29 @@
 <?php
 session_start();
+include_once('/Applications/XAMPP/htdocs/telcosmswp/connect_db.php');
 
-function typeClienteToString($type){
+if ($_SESSION['user_session']!="") {
 
-echo ($type != 0 ) ? "Corporative" : "Standard";
+    try {
+//3.1.2 Checking the values are existing in the database or not
 
+        $id_in = $_SESSION['user_session'];
 
+        $query = "SELECT *  FROM `Cliente` WHERE id_cliente='$id_in'";
+        $result = mysqli_query($link, $query) or die(mysqli_error($link));
+        $useRow=mysqli_fetch_array($result);
+
+    } catch (mysqli_sql_exception $e) {
+        $e->getMessage();
+    }
 }
-
 ?>
+<!--echo ($type != '' ) ? "Corporative" : "Standard";-->
 
+<!--if(!isset($_SESSION['user_session']))
+{
+   header("Location: profile.html");
+}-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +91,7 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index_logged.html">
                     <img src="../telcosmswp/images/telcopagelogo.png" alt="logo"></a>
             </div>
 
@@ -89,7 +103,7 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
                     <li><a href="about-us_logged.html">Quem Somos</a></li>
                     <li><a href="contact-us_logged.html">Contactos</a></li>
                     <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
-                    <li class="active"><a href="profile.html">Profile</a></li>
+                    <li class="active"><a href="profile.php">Profile</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
             </div>
@@ -108,13 +122,13 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
                              class="img-polaroid"/>
                     </div>
                     <div class="span4">
-                        <h2><?php echo $_SESSION['login_username']?></h2>
+                        <h2><?php echo $useRow['nome_cliente'] ?></h2>
                         <ul class="unstyled">
-                            <li><i class="fa fa-phone"></i><?php echo $_SESSION['telefone']?></li>
-                            <li><i class="fa fa-inbox"></i><?php echo $_SESSION['email']?></li>
-                            <li><i class="fa fa-tasks"></i><?php echo $_SESSION['clienteType']?></li>
-                            <li><i class="fa fa-magic"></i> reference : xasarasdasdasd123</li>
-                            <li><i class="fa fa-edit"></i><a href="edit.html"> edit profile</a></li>
+                            <li><i class="fa fa-phone"></i> <?php echo $useRow['telemovel'] ?></li>
+                            <li><i class="fa fa-inbox"></i> <?php echo $useRow['email'] ?></li>
+                            <li><i class="fa fa-magic"></i> referencia : <?php echo $useRow['cliente_referencia'] ?>
+                            </li>
+                            <li><i class="fa fa-edit"></i><a href="edit.php"> edit profile</a></li>
                         </ul>
                     </div>
                     <div class="span6">
@@ -158,7 +172,7 @@ echo ($type != 0 ) ? "Corporative" : "Standard";
                     <div class="form-group">
                         <label>Origem *</label>
                         <input style="height: 40px" type="text"
-                               value=" <?php echo typeClienteToString($_SESSION['clienteType'])?>"
+                               value=" <?php echo $useRow['cliente_referencia'] ?>"
                                class="form-control" required="required" readonly/>
                     </div>
 

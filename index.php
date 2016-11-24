@@ -1,3 +1,47 @@
+<?php
+session_start();
+require_once 'connect_db.php';
+
+
+if (isset($_POST['btn-login'])) {
+//3.1.1 Assigning posted values to variables.
+
+    $username = trim($_POST['login_username']);
+    $username = strip_tags($username);
+    $username = htmlspecialchars($username);
+
+
+    $pass = trim($_POST['login_password']);
+    $pass = strip_tags($pass);
+    $pass = htmlspecialchars($pass);
+
+
+    try {
+//3.1.2 Checking the values are existing in the database or not
+        $password_in = hash('sha256', $pass);
+        $query = "SELECT id_cliente , username , password  FROM `Cliente` WHERE username='$username' AND  password = '$password_in'";
+        $result = mysqli_query($link, $query) or die(mysqli_error($link));
+        $row = mysqli_fetch_array($result);
+        $count = mysqli_num_rows($result);
+
+//3.1.2 If the posted values are equal to the database values, then session will be created for the user.
+
+        if ($count == 1 && $row['password'] == $password_in) {
+            $_SESSION['user_session'] = $row['id_cliente'];
+            header("Location: profile.php");
+
+        } else {
+
+            echo "<script language='javascript'>\n alert('Utilizador e password invalidos');\n </script>";
+
+        }
+    } catch (mysqli_sql_exception $e) {
+        echo $e->getMessage();
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +89,7 @@
                         </ul>
                         <div class="search">
                             <form role="form">
-                                <input type="text" class="search-form" autocomplete="off" placeholder="Pesquise">
+                                <input type="text" class="search-form" autocomplete="off" placeholder="Search">
                                 <i class="fa fa-search"></i>
                             </form>
                         </div>
@@ -64,26 +108,129 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index_logged.html">
+                <a class="navbar-brand" href="index.php">
                     <img src="../telcosmswp/images/telcopagelogo.png" alt="logo"></a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index_logged.html">TelcoSMS</a></li>
-                    <li ><a href="services_logged.html">Serviços</a></li>
-                    <li><a href="tableprices_logged.html">Pacotes</a></li>
-                    <li><a href="about-us_logged.html">Quem Somos</a></li>
-                    <li><a href="contact-us_logged.html">Contactos</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
-                    <li><a href="profile.php">Profile</a></li>
-                    <li><a href="logout.php">logout</a></li>
+                    <li class="active"><a href="index.php">TelcoSms</a></li>
+                    <li><a href="services.html">Serviços</a></li>
+                    <li><a href="tableprices.html">Pacotes</a></li>
+                    <li><a href="about-us.html">Quem Somos</a></li>
+                    <li><a href="contact-us.html">Contactos</a></li>
+                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a data-toggle="modal" data-target="#login-modal">Log In</a></li>
                 </ul>
             </div>
         </div><!--/.container-->
     </nav><!--/nav-->
 
 </header><!--/header-->
+
+<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <img class="img-circle" id="img_logo" src="images/loginlogo.png">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <!-- Begin # DIV Form -->
+            <div id="div-forms">
+                <!-- Begin # Login Form -->
+                <form id="login-form" method="post">
+
+                    <div class="modal-body">
+
+                        <div id="div-login-msg">
+
+                            <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <span id="text-login-msg">Utilizador e Password.</span>
+                        </div>
+                        <input name="login_username" id="login_username" class="form-control" type="text"
+                               placeholder="utilizador" required>
+                        <input name="login_password" id="login_password" class="form-control" type="password"
+                               placeholder="Password"
+                               required>
+                    </div>
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="btn-login"
+                                    id="btn-login">Login
+                            </button>
+                        </div>
+                        <div>
+                            <button id="login_lost_btn" type="button" class="btn btn-link">Recuperar Password?</button>
+                            <button id="login_register_btn" type="button" class="btn btn-link">Registro</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End # Login Form -->
+
+                <!-- Begin | Lost Password Form -->
+                <form id="lost-form" action="recover_password.php" style="display:none;">
+                    <div class="modal-body">
+                        <div id="div-lost-msg">
+                            <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <span id="text-lost-msg">Type your e-mail.</span>
+                        </div>
+                        <input id="lost_email" class="form-control" type="text"
+                               placeholder="E-Mail to recover your pass" required>
+                    </div>
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+                        </div>
+                        <div>
+                            <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>
+                            <button id="lost_register_btn" type="button" class="btn btn-link">Registro</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End | Lost Password Form -->
+
+                <!-- Begin | Register Form -->
+                <form id="register-form" method="post" action="register.php" style="display:none;">
+                    <br class="modal-body">
+                    <div id="div-register-msg">
+                        <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                        <span id="text-register-msg">Criar conta</span>
+                    </div>
+                    <input name="register_name" class="form-control" type="text" placeholder="Nome" required>
+                    <input name="register_apelido" class="form-control" type="text" placeholder="Apelido" required>
+                    <input name="register_username" class="form-control" type="text" placeholder="username" required>
+                    <input name="register_password" class="form-control" type="password" placeholder="password"
+                           required>
+                    <input name="register_telefone" class="form-control" type="number" placeholder="telefone" required>
+                    <input name="register_email" class="form-control" type="email" placeholder="E-Mail" required>
+
+
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" name="register_btn" class="btn btn-primary btn-lg btn-block">Criar
+                            </button>
+
+                            <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
+                            <button id="register_lost_btn" type="button" class="btn btn-link">Recuperar Password?
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End | Register Form -->
+
+            </div>
+            <!-- End # DIV Form -->
+
+        </div>
+    </div>
+</div>
+<!-- END # MODAL LOGIN -->
+
 
 <section id="main-slider" class="no-margin">
     <div class="carousel slide">
@@ -160,11 +307,11 @@
                     <i class="fa fa-bullhorn"></i>
                     <h2>BULK SMS</h2>
                     <h3><p align="justify"> Nunca foi mais fácil interagir com os seus parceiros de negócio,a
-                        TelcoSMS apresenta-lhe o serviço que veio para solucionar o seu problema de comunicação.
-                        Através da nossa aplicação de envio de mensagens é possível carregar-se uma lista de
-                        contactos e enviar a mensagem desejada para os seus cientes,fornecedores,etc.
+                            TelcoSMS apresenta-lhe o serviço que veio para solucionar o seu problema de comunicação.
+                            Através da nossa aplicação de envio de mensagens é possível carregar-se uma lista de
+                            contactos e enviar a mensagem desejada para os seus cientes,fornecedores,etc.
                     </h3>
-                    <h2><a href="tableprices_logged.html">saiba mais</a></h2>
+                    <h2><a href="#" data-toggle="modal" data-target="#login-modal">saiba mais</a></h2>
                 </div>
             </div><!--/.col-md-4-->
 
@@ -173,13 +320,13 @@
                     <i class="fa fa-comments"></i>
                     <h2> SMS Corporativa</h2>
                     <h3><p align="justify">
-                        Através de aplicações de envio de mensagens (existentes nos ERP, CRMs, etc…), as empresas
-                        poderão de forma
-                        fácil e rápida integrar-se a nossa Gateway de mensagens (TelcoRush SMS Gateway)
-                        e enviarem mensagens para os seus clientes ou colaboradores de todas as redes móveis
-                        nacionais
-                        e internacionais.</h3>
-                    <h2><a href="tableprices_logged.html">saiba mais</a></h2>
+                            Através de aplicações de envio de mensagens (existentes nos ERP, CRMs, etc…), as empresas
+                            poderão de forma
+                            fácil e rápida integrar-se a nossa Gateway de mensagens (TelcoRush SMS Gateway)
+                            e enviarem mensagens para os seus clientes ou colaboradores de todas as redes móveis
+                            nacionais
+                            e internacionais.</h3>
+                    <h2><a href="#" data-toggle="modal" data-target="#login-modal">saiba mais</a></h2>
                 </div>
             </div><!--/.col-md-4-->
 
@@ -188,13 +335,14 @@
                     <i class="fa fa-cloud-download"></i>
                     <h2>Email to SmS - SE2S</h2>
                     <h3><p align="justify"> O serviço E2S (E-mail para SMS) permite o envio de mensagem apartir da
-                        aplicação de correio eletrónico corporativo</h3>
-                    <h2><a href="tableprices_logged.html">saiba mais</a></h2>
+                            aplicação de correio eletrónico corporativo</h3>
+                    <h2><a href="#" data-toggle="modal" data-target="#login-modal">saiba mais</a></h2>
+                </div>
             </div><!--/.col-md-4-->
         </div><!--/.services-->
     </div><!--/.row-->
 </div><!--/.container-->
-</div><!--/#feature-->
+</section><!--/#feature-->
 
 
 <section id="partner">
@@ -249,9 +397,9 @@
             </div>
             <div class="col-sm-6">
                 <ul class="pull-right">
-                    <li><a href="index_logged.html">TelcoSMS</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
-                    <li><a href="contact-us_logged.html">Contactos</a></li>
+                    <li><a href="#">TelcoSMS</a></li>
+                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="contact-us.html">Contactos</a></li>
                 </ul>
             </div>
         </div>
@@ -260,11 +408,13 @@
 
 
 <script src="js/jquery.js"></script>
+<script src="login.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/wow.min.js"></script>
+
 
 </body>
 </html>

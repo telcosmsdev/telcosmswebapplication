@@ -4,7 +4,7 @@ session_start();
 require_once('/Applications/XAMPP/htdocs/telcosmswp/connect_db.php');
 
 
-if (isset($_POST['register_btn']) ) {
+if (isset($_POST['register_btn'])) {
 
     // clean user inputs to prevent sql injections
     $name = trim($_POST['register_name']);
@@ -28,7 +28,7 @@ if (isset($_POST['register_btn']) ) {
 
     $telemovel = trim($_POST['register_telefone']);
     $telemovel = strip_tags($telemovel);
-    $telemovel  = htmlspecialchars($telemovel);
+    $telemovel = htmlspecialchars($telemovel);
 
 
     $email = trim($_POST['register_email']);
@@ -36,21 +36,19 @@ if (isset($_POST['register_btn']) ) {
     $email = htmlspecialchars($email);
 
 
-
     // password encrypt using SHA256();
-   $password_encripted = hash('sha256', $password_);
+    $password_encripted = hash('sha256', $password_);
 
-    $name = $name."  ".$apelido;
+    $name = $name . "  " . $apelido;
 
+    try {
         $query = "INSERT INTO cliente (nome_cliente, username, password, email, telemovel, cliente_referencia) 
-                           VALUES('$name', '$username_','$password_encripted','$email','$telemovel', NULL);";
-         $res = mysqli_query($link, $query);
+                           VALUES('$name', '$username_','$password_encripted','$email','$telemovel', 'Standard');";
+        $res = mysqli_query($link, $query);
 
         if ($res) {
-            $errTyp = "success";
-            $errMSG = "Successfully registered, you may login now";
 
-            header('Location: http://localhost/telcosmswp/sucessfull.html');
+            header('Location: http://localhost/telcosmswp/sucessfull.php');
 
             unset($name);
             unset($email);
@@ -60,7 +58,7 @@ if (isset($_POST['register_btn']) ) {
 
         } else {
 
-            echo "danger ".$res;
+            echo "danger " . $res;
             $errTyp = "danger";
             $errMSG = "Something went wrong, try again later...";
 
@@ -69,5 +67,8 @@ if (isset($_POST['register_btn']) ) {
 
         }
 
+    } catch (mysqli_sql_exception $e) {
+        $e->getMessage();
+    }
 }
 ?>

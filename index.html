@@ -76,7 +76,7 @@
                     <li><a href="about-us.html">Quem Somos</a></li>
                     <li><a href="contact-us.html">Contactos</a></li>
                     <li><a href="help-support.html">Ajuda e Suporte</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li>
+                    <li><a data-toggle="modal" data-target="#login-modal" >Log In</a></li>
                 </ul>
             </div>
         </div><!--/.container-->
@@ -99,23 +99,26 @@
             <!-- Begin # DIV Form -->
             <div id="div-forms">
                 <!-- Begin # Login Form -->
-                <form id="login-form" action="login.php" method="post">
+                <form id="login-form" method="post">
+
                     <div class="modal-body">
+                    <div id = error>
+                        </div>
                         <div id="div-login-msg">
                             <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
                             <span id="text-login-msg">Utilizador e Password.</span>
                         </div>
-                        <input name="login_username" class="form-control" type="text" placeholder="utilizador" required>
-                        <input name="login_password" class="form-control" type="password" placeholder="Password"
+                        <input name="login_username" id= "login_username" class="form-control" type="text" placeholder="utilizador" required>
+                        <input name="login_password" id ="login_password"  class="form-control" type="password" placeholder="Password"
                                required>
                     </div>
                     <div class="modal-footer">
                         <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="btn-login" id="btn-login">Login</button>
                         </div>
                         <div>
                             <button id="login_lost_btn" type="button" class="btn btn-link">Recuperar Password?</button>
-                            <button id="login_register_btn" type="button" class="btn btn-link">Registro</button>
+                            <button id="login_register_btn" type="button" class="btn btn-link" >Registro</button>
                         </div>
                     </div>
                 </form>
@@ -357,11 +360,13 @@
 
 
 <script src="js/jquery.js"></script>
+<script src="login.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/wow.min.js"></script>
+
 
 </body>
 </html>

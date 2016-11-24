@@ -1,9 +1,10 @@
 <?php //Start the Session
+
 session_start();
 require_once('/Applications/XAMPP/htdocs/telcosmswp/connect_db.php');
-//3. If the form is submitted or not.
-//3.1 If the form is submitted
-if (isset($_POST['login_username']) and isset($_POST['login_password'])) {
+
+
+if (isset($_POST['btn-login'])) {
 //3.1.1 Assigning posted values to variables.
 
     $username = trim($_POST['login_username']);
@@ -16,47 +17,62 @@ if (isset($_POST['login_username']) and isset($_POST['login_password'])) {
     $pass = htmlspecialchars($pass);
 
 
-
+    try {
 //3.1.2 Checking the values are existing in the database or not
-    $password_in = hash('sha256', $pass);
-    $query = "SELECT id_cliente,nome_cliente, username ,password, email, telemovel, cliente_referencia  FROM `Cliente` WHERE username='$username'";
-    $result = mysqli_query($link, $query) or die(mysqli_error($link));
-    $row=mysqli_fetch_array($result);
-    $count = mysqli_num_rows($result);
+        $password_in = hash('sha256', $pass);
+        $query = "SELECT id_cliente,nome_cliente, username ,password, email, telemovel, cliente_referencia  FROM `Cliente` WHERE username='$username' AND  password = '$password_in'";
+        $result = mysqli_query($link, $query) or die(mysqli_error($link));
+        $row = mysqli_fetch_array($result);
+        $count = mysqli_num_rows($result);
 
 //3.1.2 If the posted values are equal to the database values, then session will be created for the user.
-   //
+        //
 
-    if ($count == 1 && $row['password'] == $password_in) {
 
-        $_SESSION['login_username'] = $username;
-        $_SESSION['nome_cliente'] = $row['nome_cliente'];
-        $_SESSION['id_cliente'] = $row['id_cliente'];
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['telefone'] = $row['telefone'];
-        $_SESSION['cliente_referencia'] = $row['cliente_referencia'];
+        if ($count == 1 && $row['password'] == $password_in) {
 
-        header('Location: http://localhost/telcosmswp/profile.html');
+            //print_r($_POST);
+            /*$_SESSION['login_username'] = $username;
+              $_SESSION['nome_cliente'] = $row['nome_cliente'];
+              $_SESSION['id_cliente'] = $row['id_cliente'];
+              $_SESSION['email'] = $row['email'];
+              $_SESSION['telemovel'] = $row['telemovel'];
+              $_SESSION['cliente_ref'] = "xasxaasxa";
 
-        unset($password_in);
+              header('Location: http://localhost/telcosmswp/profile.html');*/
+            $return_arr["status"] = '1';
+            $return_arr["message"] = 'logged';
+            $json = json_encode($return_arr);
+            if ($json === false) {
+                // Avoid echo of empty string (which is invalid JSON), and
+                // JSONify the error message instead:
+                $json = json_encode(array("jsonError", json_last_error_msg()));
+                if ($json === false) {
+                    // This should not happen, but we go all the way now:
+                    $json = '{"jsonError": "unknown"}';
+                }
+                // Set HTTP response status code to: 500 - Internal Server Error
+                http_response_code(500);
+            }
+            else  echo $json;
+           // exit();
 
-    } else {
-//3.1.3 If the login credentials doesn't match, he will be shown with an error message.
-        $fmsg = "Invalid Login Credentials.";
+            //echo "1"; // log in
+            // $_SESSION['user_session'] = $row['id_cliente'];
 
-        header('Location: http://localhost/telcosmswp/index.html');
-        echo $fmsg;
+            //unset($password_in);
+
+        } else {
+
+            $return_arr["status"] = '2';
+            $return_arr["message"] = 'nologged';
+            echo json_encode($return_arr);
+            //exit();
+
+        }
+    } catch (mysqli_sql_exception $e) {
+
+        echo $e->getMessage();
     }
-}
-//3.1.4 if the user is logged in Greets the user with message
-if (isset($_SESSION['login_username'])) {
-
-    $username = $_SESSION['login_username'];
-    echo "Hai " . $username . "";
-   // header('Location: http://localhost/telcosmswp/userlogged.html');
-
-//    echo "<a href='logout.php'>Logout</a>";
-
-} else {
-//3.2 When the user visits the page first time, simple login form will be displayed.
 } ?>
+
