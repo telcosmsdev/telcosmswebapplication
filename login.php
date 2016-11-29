@@ -25,9 +25,6 @@ if (isset($_POST['btn-login'])) {
         $row = mysqli_fetch_array($result);
         $count = mysqli_num_rows($result);
 
-//3.1.2 If the posted values are equal to the database values, then session will be created for the user.
-        //
-
 
         if ($count == 1 && $row['password'] == $password_in) {
 

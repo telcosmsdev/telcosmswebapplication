@@ -2,28 +2,42 @@
 session_start();
 include_once('/Applications/XAMPP/htdocs/telcosmswp/connect_db.php');
 
-if ($_SESSION['user_session']!="") {
+if ($_SESSION['user_session'] != "") {
 
     try {
-//3.1.2 Checking the values are existing in the database or not
+
 
         $id_in = $_SESSION['user_session'];
 
-        $query = "SELECT *  FROM `Cliente` WHERE id_cliente='$id_in'";
+        //query sms total disponiveis e enviadas  .... para cada cliente
+        $query = "SELECT *  FROM `Cliente` 
+                      INNER JOIN SmsEnviadas 
+                      ON `Cliente`.`id_cliente` = `SmsEnviadas`.`id_cliente`
+                      INNER JOIN `SmsDisponiveis` 
+                      ON `Cliente`.`id_cliente` = `SmsDisponiveis`. `id_cliente` 
+                      WHERE `Cliente`.`id_cliente` = '$id_in'";
         $result = mysqli_query($link, $query) or die(mysqli_error($link));
-        $useRow=mysqli_fetch_array($result);
+        $useRow = mysqli_fetch_array($result);
 
+        //total de contactos por clientes
+        $query_total_contactos = "SELECT COUNT(*) as total_contactos  FROM `ContactosCliente` 
+                      WHERE `ContactosCliente`.`id_cliente` = '$id_in'";
+        $result_total_contactos = mysqli_query($link, $query_total_contactos) or die(mysqli_error($link));
+        $user_total_contactos = mysqli_fetch_array($result_total_contactos);
+
+
+        $query_lista_contactos = "SELECT n_telemovel FROM `ContactosCliente` 
+                      WHERE `ContactosCliente`.`id_cliente` = '$id_in'";
+        $result_lista_contactos = mysqli_query($link, $query_lista_contactos) or die(mysqli_error($link));
+        $user_lista_contactos = mysqli_fetch_array($result_lista_contactos);
+
+        // echo var_dump( $user_lista_contactos );
     } catch (mysqli_sql_exception $e) {
         $e->getMessage();
     }
 }
 ?>
-<!--echo ($type != '' ) ? "Corporative" : "Standard";-->
 
-<!--if(!isset($_SESSION['user_session']))
-{
-   header("Location: profile.html");
-}-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +117,7 @@ if ($_SESSION['user_session']!="") {
                     <li><a href="about-us_logged.html">Quem Somos</a></li>
                     <li><a href="contact-us_logged.html">Contactos</a></li>
                     <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
-                    <li class="active"><a href="profile.php">Profile</a></li>
+                    <li class="active"><a href="profile.php">Perfil</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
             </div>
@@ -134,15 +148,15 @@ if ($_SESSION['user_session']!="") {
                     <div class="span6">
                         <ul class="inline stats">
                             <li>
-                                <span>275</span>
+                                <span><?php echo $useRow['n_sms_enviadas'] ?></span>
                                 sms enviadas
                             </li>
                             <li>
-                                <span>354</span>
+                                <span><?php echo $useRow['n_sms_disponiveis'] ?></span>
                                 sms disponiveis
                             </li>
                             <li>
-                                <span>186</span>
+                                <span><?php echo $user_total_contactos['total_contactos'] ?></span>
                                 contactos
                             </li>
                         </ul>
@@ -166,33 +180,62 @@ if ($_SESSION['user_session']!="") {
         <div class="row contact-wrap">
             <div class="status alert alert-success" style="display: none"></div>
 
-            <form id="import-contacts" class="contact-form" name="import-contect" method="post"
-                  action="importfile.php" enctype="multipart/form-data">
-                <div class="col-sm-4 col-sm-offset-4">
-                    <div class="form-group">
-                        <label>Origem *</label>
-                        <input style="height: 40px" type="text"
-                               value=" <?php echo $useRow['cliente_referencia'] ?>"
-                               class="form-control" required="required" readonly/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Contactos *</label>
-                        <input style="height: 40px" type="number" class="form-control"/>
-                    </div>
-
-                    <div style="float:right" class="form-group dropdown">
-                        <button style="float:right" type="submit" name="submit" class="btn btn-primary btn-lg"
-                                required="required">Adicionar Contactos
-                            <i class="fa fa-angle-down"></i>
-                            <ul style="float:right" class="dropdown-menu">
-                                <li><a href="#">base de dados</a></li>
-                                <li><a href="#">meus contactos</a></li>
-                                <li><a href="#">importar ficheiro .xls .txt</a></li>
-                            </ul>
-                        </button>
-                    </div>
+            <!--<form id="import-contacts" class="contact-form" name="import-contect" method="post"
+                  action="importfile.php" enctype="multipart/form-data">-->
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="form-group">
+                    <label>Origem *</label>
+                    <input style="height: 40px" type="text"
+                           value=" <?php echo $useRow['cliente_referencia'] ?>"
+                           class="form-control" required="required" readonly/>
                 </div>
+
+                <div class="form-group">
+                    <label>Contactos *</label>
+                    <input style="height: 40px" type="number" class="form-control" required="required"/>
+                </div>
+
+                <div style="float:right" class="form-group dropdown">
+                    <button style="float:right" class="btn btn-primary btn-lg"
+                            required="required">
+                        <!--<i class="fa fa-angle-down"></i>-->
+                        <?php
+                        if (isset($_POST['form_tipo_contactos'])) {
+
+                             $escolha = $_POST['form_tipo_contactos'];
+
+                            switch ($escolha) {
+
+                                case "base_dados":
+                                    echo "<script language='javascript'>\n alert(base dados');\n </script>";
+                                    break;
+                                case "meus_contactos":
+                                    echo "<script language='javascript'>\n alert('meus contactos');\n </script>";
+                                    break;
+                                case "import_file":
+                                    echo "<script language='javascript'>\n alert('import file');\n </script>";
+                                    break;
+
+                            }
+                        }
+                        ?>
+                        <select name="form_tipo_contactos">
+                            <option value=""> Selecionar contactos</option>
+                            <option value="base_dados"> base de dados</option>
+                            <option value="meus_contactos"> meus contactos</option>
+                            <option value="import_file"> importar .xls .txt</option>
+                        </select>
+
+                        <!--<ul style="float:right" class="dropdown-menu">
+                            <selec>
+                            <li><a href="#" id="base_dados_select" type="submit">base de dados</a></li>
+                            <li><a id="meus_contactos_select" type="submit">meus contactos</a></li>
+                            <li><a href="#" id="import_file" type="submit">importar ficheiro .xls .txt</a>
+                            </li>
+                        </ul>-->
+                    </button>
+                </div>
+            </div>
             </form>
         </div>
         <!-- /form sms -->
