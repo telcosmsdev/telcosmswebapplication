@@ -75,7 +75,7 @@
                     <li class="active"><a href="tableprices_logged.php">Pacotes</a></li>
                     <li><a href="about-us_logged.php">Quem Somos</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li><a href="profile.php">Profile</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
@@ -155,7 +155,7 @@
         <td>13,25 AOA</td>
         <td>15,75 AOA</td>
         <td>
-            <a href="packetstandard_logged.html" class="btn btn-primary">pague ja</a>
+            <a href="packetstandard_logged.php" class="btn btn-primary">pague ja</a>
         </td>
     </tr>
     <tr>
@@ -164,7 +164,7 @@
         <td>10,25 AOA</td>
         <td>12,75 AOA</td>
         <td>
-            <a href="packetpremium_logged.html" class="btn btn-primary">pague ja</a>
+            <a href="packetpremium_logged.php" class="btn btn-primary">pague ja</a>
         </td>
     </tr>
     <tr>
@@ -173,7 +173,7 @@
         <td>8,75 AOA</td>
         <td>11,25 AOA</td>
         <td>
-            <a href="packetgold_logged.html" class="btn btn-primary">pague ja</a>
+            <a href="packetgold_logged.php" class="btn btn-primary">pague ja</a>
         </td>
 
     </tr>
@@ -184,7 +184,7 @@
         <td> a negociar</td>
         <td>45% do preço por SMS</td>
         <td>
-            <a href="packetsupergold_logged.html" class="btn btn-primary">encomende</a>
+            <a href="packetsupergold_logged.php" class="btn btn-primary">encomende</a>
         </td>
 
     </tr>
@@ -218,7 +218,7 @@
             <div class="col-sm-6">
                 <ul class="pull-right">
                     <li><a href="index_logged.php">TelcoSMS</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
                 </ul>
             </div>

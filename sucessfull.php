@@ -248,7 +248,7 @@ if (isset($_POST['btn-login'])) {
             <div class="col-sm-6">
                 <ul class="pull-right">
                     <li><a href="#">TelcoSms</a></li>
-                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support.php">Ajuda e Suporte</a></li>
                     <li><a href="contact-us.php">Contactos</a></li>
                 </ul>
             </div>

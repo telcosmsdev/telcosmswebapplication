@@ -76,18 +76,18 @@
                     <li class="active"><a href="tableprices_logged.php">Pacotes</a></li>
                     <li><a href="about-us_logged.php">Quem Somos</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li><a href="profile.php">Profile</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
             </div>
         </div><!--/.container-->
     </nav><!--/nav-->
-
 </header><!--/header-->
 
-<!-- BEGIN # MODAL LOGIN -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+<!-- BEGIN # MODAL CONSTRUCTION-->
+<div class="modal fade" id="construct-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true"
      style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -100,85 +100,16 @@
 
             <!-- Begin # DIV Form -->
             <div id="div-forms">
-                <!-- Begin # Login Form -->
-                <form id="login-form" action="login.php" method="post">
+                <form id="show_construction" method="post">
                     <div class="modal-body">
-                        <div id="div-login-msg">
-                            <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
-                            <span id="text-login-msg">Utilizador e Password.</span>
-                        </div>
-                        <input name="login_username" class="form-control" type="text" placeholder="utilizador" required>
-                        <input name="login_password" class="form-control" type="password" placeholder="Password"
-                               required>
-                    </div>
-                    <div class="modal-footer">
-                        <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
-                        </div>
-                        <div>
-                            <button id="login_lost_btn" type="button" class="btn btn-link">Recuperar Password?</button>
-                            <button id="login_register_btn" type="button" class="btn btn-link">Registro</button>
-                        </div>
+                        <p> UNDER CONSTRUCTION </p>
                     </div>
                 </form>
-                <!-- End # Login Form -->
-
-                <!-- Begin | Lost Password Form -->
-                <form id="lost-form" action="recover_password.php" style="display:none;">
-                    <div class="modal-body">
-                        <div id="div-lost-msg">
-                            <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
-                            <span id="text-lost-msg">Type your e-mail.</span>
-                        </div>
-                        <input id="lost_email" class="form-control" type="text"
-                               placeholder="E-Mail (type ERROR for error effect)" required>
-                    </div>
-                    <div class="modal-footer">
-                        <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
-                        </div>
-                        <div>
-                            <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>
-                            <button id="lost_register_btn" type="button" class="btn btn-link">Registro</button>
-                        </div>
-                    </div>
-                </form>
-                <!-- End | Lost Password Form -->
-
-                <!-- Begin | Register Form -->
-                <form id="register-form" method="post" action="register.php" style="display:none;">
-                    <br class="modal-body">
-                    <div id="div-register-msg">
-                        <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                        <span id="text-register-msg">Criar conta</span>
-                    </div>
-                    <input name="register_name" class="form-control" type="text" placeholder="Nome" required>
-                    <input name="register_apelido" class="form-control" type="text" placeholder="Apelido" required>
-                    <input name="register_username" class="form-control" type="text" placeholder="username" required>
-                    <input name="register_password" class="form-control" type="password" placeholder="password" required>
-                    <input name="register_telefone" class="form-control" type="number" placeholder="telefone" required>
-                    <input name="register_email" class="form-control" type="email" placeholder="E-Mail" required>
-
-
-                    <div class="modal-footer">
-                        <div>
-                            <button type="submit" name="register_btn" class="btn btn-primary btn-lg btn-block">Criar
-                            </button>
-
-                            <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
-                            <button id="register_lost_btn" type="button" class="btn btn-link">Recuperar Password?</button>
-                        </div>
-                    </div>
-                </form>
-                <!-- End | Register Form -->
-
             </div>
-            <!-- End # DIV Form -->
-
         </div>
     </div>
 </div>
-<!-- END # MODAL LOGIN -->
+<!-- BEGIN # MODAL CONSTRUCTION -->
 
 <section class="pricing-page">
     <div class="container">
@@ -200,7 +131,7 @@
                         <li>24/7 Suporte Tecnico</li>
                         <li>Sem Acesso a Base De Dados</li>
                         <li class="plan-action">
-                            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Pagar</a>
+                            <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>
                         </li>
                     </ul>
                 </div>
@@ -218,7 +149,7 @@
                         <li>24/7 Suporte Tecnico</li>
                         <li>Acesso a Base De Dados</li>
                         <li class="plan-action">
-                            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Pagar</a>
+                            <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>
                         </li>
                     </ul>
                 </div>
@@ -244,7 +175,7 @@
             <div class="col-sm-6">
                 <ul class="pull-right">
                     <li><a href="index_logged.php">TelcoSMS</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
                 </ul>
             </div>

@@ -71,12 +71,12 @@
 
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li ><a href="index_logged.php">TelcoSMS</a></li>
-                    <li ><a href="services_logged.php">Serviços</a></li>
+                    <li><a href="index_logged.php">TelcoSMS</a></li>
+                    <li><a href="services_logged.php">Serviços</a></li>
                     <li class="active"><a href="tableprices_logged.php">Pacotes</a></li>
                     <li><a href="about-us_logged.php">Quem Somos</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li><a href="profile.php">Profile</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
@@ -106,7 +106,7 @@
                         <li>24/7 Suporte Tecnico</li>
                         <li>Sem Acesso a Base De Dados</li>
                         <li class="plan-action">
-                            <a href="#" class="btn btn-primary">Pagar</a>
+                            <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>
                         </li>
                     </ul>
                 </div>
@@ -124,14 +124,43 @@
                         <li>24/7 Suporte Tecnico</li>
                         <li>Acesso a Base De Dados</li>
                         <li class="plan-action">
-                            <a href="#" class="btn btn-primary">Pagar</a>
+                            <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>
                         </li>
                     </ul>
                 </div>
             </div><!--/pricing-area-->
         </div><!--/container-->
-</div>
+    </div>
 </section><!--/pricing-page-->
+
+
+<!-- BEGIN # MODAL CONSTRUCTION-->
+<div class="modal fade" id="construct-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true"
+     style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <img class="img-circle" id="img_logo" src="images/loginlogo.png">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <!-- Begin # DIV Form -->
+            <div id="div-forms">
+                <form id="show_construction" method="post">
+                    <div class="modal-body">
+
+                        <p> UNDER CONSTRUCTION </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BEGIN # MODAL CONSTRUCTION -->
+
 
 <section class="pricing-page">
     <div class="container">
@@ -149,7 +178,7 @@
             <div class="col-sm-6">
                 <ul class="pull-right">
                     <li><a href="index_logged.php">TelcoSMS</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
                 </ul>
             </div>
@@ -157,14 +186,14 @@
     </div>
 </footer><!--/#footer-->
 
-    <script src="js/jquery.js"></script>
-    <script type="text/javascript">
-        $('.carousel').carousel()
-    </script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/wow.min.js"></script>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+    $('.carousel').carousel()
+</script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/jquery.isotope.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/wow.min.js"></script>
 </body>
 </html>

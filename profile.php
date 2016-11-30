@@ -116,7 +116,7 @@ if ($_SESSION['user_session'] != "") {
                     <li><a href="tableprices_logged.php">Pacotes</a></li>
                     <li><a href="about-us_logged.php">Quem Somos</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li class="active"><a href="profile.php">Perfil</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
@@ -277,7 +277,7 @@ if ($_SESSION['user_session'] != "") {
             <div class="col-sm-6">
                 <ul class="pull-right">
                     <li><a href="#">TelcoSms</a></li>
-                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support.php">Ajuda e Suporte</a></li>
                     <li><a href="contact-us.php">Contactos</a></li>
                 </ul>
             </div>

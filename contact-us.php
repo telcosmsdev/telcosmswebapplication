@@ -122,7 +122,7 @@ if (isset($_POST['btn-login'])) {
                     <li><a href="tableprices.php">Pacotes</a></li>
                     <li><a href="about-us.php">Quem Somos</a></li>
                     <li class="active"><a href="contact-us.php">Contactos</a></li>
-                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support.php">Ajuda e Suporte</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li>
                 </ul>
             </div>
@@ -335,7 +335,7 @@ if (isset($_POST['btn-login'])) {
                 <div class="col-sm-6">
                     <ul class="pull-right">
                         <li><a href="#">TelcoSms</a></li>
-                        <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                        <li><a href="help-support.php">Ajuda e Suporte</a></li>
                         <li><a href="contact-us.php">Contactos</a></li>
                     </ul>
                 </div>

@@ -123,7 +123,7 @@ if (isset($_POST['btn-login'])) {
                     <li class="active"><a href="tableprices.php">Pacotes</a></li>
                     <li><a href="about-us.php">Quem Somos</a></li>
                     <li><a href="contact-us.php">Contactos</a></li>
-                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support.php">Ajuda e Suporte</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li>
                 </ul>
             </div>
@@ -147,19 +147,26 @@ if (isset($_POST['btn-login'])) {
             <!-- Begin # DIV Form -->
             <div id="div-forms">
                 <!-- Begin # Login Form -->
-                <form id="login-form" action="login.php" method="post">
+                <form id="login-form" method="post">
+
                     <div class="modal-body">
+
                         <div id="div-login-msg">
+
                             <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
                             <span id="text-login-msg">Utilizador e Password.</span>
                         </div>
-                        <input name="login_username" class="form-control" type="text" placeholder="utilizador" required>
-                        <input name="login_password" class="form-control" type="password" placeholder="Password"
+                        <input name="login_username" id="login_username" class="form-control" type="text"
+                               placeholder="utilizador" required>
+                        <input name="login_password" id="login_password" class="form-control" type="password"
+                               placeholder="Password"
                                required>
                     </div>
                     <div class="modal-footer">
                         <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="btn-login"
+                                    id="btn-login">Login
+                            </button>
                         </div>
                         <div>
                             <button id="login_lost_btn" type="button" class="btn btn-link">Recuperar Password?</button>
@@ -177,7 +184,7 @@ if (isset($_POST['btn-login'])) {
                             <span id="text-lost-msg">Type your e-mail.</span>
                         </div>
                         <input id="lost_email" class="form-control" type="text"
-                               placeholder="E-Mail (type ERROR for error effect)" required>
+                               placeholder="E-Mail to recover your pass" required>
                     </div>
                     <div class="modal-footer">
                         <div>
@@ -201,7 +208,8 @@ if (isset($_POST['btn-login'])) {
                     <input name="register_name" class="form-control" type="text" placeholder="Nome" required>
                     <input name="register_apelido" class="form-control" type="text" placeholder="Apelido" required>
                     <input name="register_username" class="form-control" type="text" placeholder="username" required>
-                    <input name="register_password" class="form-control" type="password" placeholder="password" required>
+                    <input name="register_password" class="form-control" type="password" placeholder="password"
+                           required>
                     <input name="register_telefone" class="form-control" type="number" placeholder="telefone" required>
                     <input name="register_email" class="form-control" type="email" placeholder="E-Mail" required>
 
@@ -212,7 +220,8 @@ if (isset($_POST['btn-login'])) {
                             </button>
 
                             <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
-                            <button id="register_lost_btn" type="button" class="btn btn-link">Recuperar Password?</button>
+                            <button id="register_lost_btn" type="button" class="btn btn-link">Recuperar Password?
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -289,7 +298,7 @@ if (isset($_POST['btn-login'])) {
             <div class="col-sm-6">
                 <ul class="pull-right">
                     <li><a href="index.php">TelcoSMS</a></li>
-                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support.php">Ajuda e Suporte</a></li>
                     <li><a href="contact-us.php">Contactos</a></li>
                 </ul>
             </div>

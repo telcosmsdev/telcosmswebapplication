@@ -122,7 +122,7 @@ if (isset($_POST['btn-login'])) {
                     <li class="active"><a href="tableprices.php">Pacotes</a></li>
                     <li><a href="about-us.php">Quem Somos</a></li>
                     <li><a href="contact-us.php">Contactos</a></li>
-                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support.php">Ajuda e Suporte</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li>
                 </ul>
             </div>
@@ -299,7 +299,7 @@ if (isset($_POST['btn-login'])) {
         <td>13,25 AOA</td>
         <td>15,75 AOA</td>
         <td>
-            <a href="packetstandard.html" class="btn btn-primary">pague ja</a>
+            <a href="packetstandard.php" class="btn btn-primary">pague ja</a>
         </td>
     </tr>
     <tr>
@@ -308,7 +308,7 @@ if (isset($_POST['btn-login'])) {
         <td>10,25 AOA</td>
         <td>12,75 AOA</td>
         <td>
-            <a href="packetpremium.html" class="btn btn-primary">pague ja</a>
+            <a href="packetpremium.php" class="btn btn-primary">pague ja</a>
         </td>
     </tr>
     <tr>
@@ -317,7 +317,7 @@ if (isset($_POST['btn-login'])) {
         <td>8,75 AOA</td>
         <td>11,25 AOA</td>
         <td>
-            <a href="packetgold.html" class="btn btn-primary">pague ja</a>
+            <a href="packetgold.php" class="btn btn-primary">pague ja</a>
         </td>
 
     </tr>
@@ -328,7 +328,7 @@ if (isset($_POST['btn-login'])) {
         <td> a negociar</td>
         <td>45% do preço por SMS</td>
         <td>
-            <a href="packetsupergold.html" class="btn btn-primary">encomende</a>
+            <a href="packetsupergold.php" class="btn btn-primary">encomende</a>
         </td>
 
     </tr>
@@ -364,7 +364,7 @@ if (isset($_POST['btn-login'])) {
             <div class="col-sm-6">
                 <ul class="pull-right">
                     <li><a href="#">TelcoSms</a></li>
-                    <li><a href="help-support.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support.php">Ajuda e Suporte</a></li>
                     <li><a href="contact-us.php">Contactos</a></li>
                 </ul>
             </div>

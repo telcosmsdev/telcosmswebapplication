@@ -75,7 +75,7 @@
                     <li><a href="tableprices_logged.php">Pacotes</a></li>
                     <li><a href="about-us_logged.php">Quem Somos</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li><a href="profile.php">Profile</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
@@ -250,7 +250,7 @@
             <div class="col-sm-6">
                 <ul class="pull-right">
                     <li><a href="index_logged.php">TelcoSMS</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
                 </ul>
             </div>

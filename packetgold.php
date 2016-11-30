@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Pacotes | TelcoSms</title>
+    <title>Pacotes | TelcoSMS</title>
 
     <!-- core pricing.html -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -76,7 +76,7 @@
                     <li class="active"><a href="tableprices_logged.php">Pacotes</a></li>
                     <li><a href="about-us_logged.php">Quem Somos</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
+                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
                     <li><a href="profile.php">Profile</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
@@ -101,19 +101,26 @@
             <!-- Begin # DIV Form -->
             <div id="div-forms">
                 <!-- Begin # Login Form -->
-                <form id="login-form" action="login.php" method="post">
+                <form id="login-form" method="post">
+
                     <div class="modal-body">
+
                         <div id="div-login-msg">
+
                             <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
                             <span id="text-login-msg">Utilizador e Password.</span>
                         </div>
-                        <input name="login_username" class="form-control" type="text" placeholder="utilizador" required>
-                        <input name="login_password" class="form-control" type="password" placeholder="Password"
+                        <input name="login_username" id="login_username" class="form-control" type="text"
+                               placeholder="utilizador" required>
+                        <input name="login_password" id="login_password" class="form-control" type="password"
+                               placeholder="Password"
                                required>
                     </div>
                     <div class="modal-footer">
                         <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" name="btn-login"
+                                    id="btn-login">Login
+                            </button>
                         </div>
                         <div>
                             <button id="login_lost_btn" type="button" class="btn btn-link">Recuperar Password?</button>
@@ -131,7 +138,7 @@
                             <span id="text-lost-msg">Type your e-mail.</span>
                         </div>
                         <input id="lost_email" class="form-control" type="text"
-                               placeholder="E-Mail (type ERROR for error effect)" required>
+                               placeholder="E-Mail to recover your pass" required>
                     </div>
                     <div class="modal-footer">
                         <div>
@@ -155,7 +162,8 @@
                     <input name="register_name" class="form-control" type="text" placeholder="Nome" required>
                     <input name="register_apelido" class="form-control" type="text" placeholder="Apelido" required>
                     <input name="register_username" class="form-control" type="text" placeholder="username" required>
-                    <input name="register_password" class="form-control" type="password" placeholder="password" required>
+                    <input name="register_password" class="form-control" type="password" placeholder="password"
+                           required>
                     <input name="register_telefone" class="form-control" type="number" placeholder="telefone" required>
                     <input name="register_email" class="form-control" type="email" placeholder="E-Mail" required>
 
@@ -166,7 +174,8 @@
                             </button>
 
                             <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
-                            <button id="register_lost_btn" type="button" class="btn btn-link">Recuperar Password?</button>
+                            <button id="register_lost_btn" type="button" class="btn btn-link">Recuperar Password?
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -183,42 +192,42 @@
 <section class="pricing-page">
     <div class="container">
         <div class="center wow fadeInDown">
-            <h2>CONHEÇA TODOS OS PACOTES TELCOSMS</h2>
+            <h2>DETALHES DOS PACOTES GOLD</h2>
             <p class="lead">Temos pacotes para todas necessidades e as melhores ofertas do mercado</p>
         </div>
         <div class="pricing-area text-center">
             <div class="row">
-                <div class="col-sm-5 col-sm-offset-1 plan price-five wow fadeInDown">
+                <div class="col-sm-5 col-sm-offset-1 plan price-one wow fadeInDown">
                     <ul>
-                        <li class="heading-five">
-                            <h1>Premium</h1>
-                            <span>420.000 Kzs</span>
+                        <li class="heading-one">
+                            <h1>Gold</h1>
+                            <span>600.000 Kzs</span>
                         </li>
-                        <li>60.000 SMS</li>
-                        <li>7kzs por SMS</li>
+                        <li>100.000 SMS</li>
+                        <li>6kzs por SMS</li>
                         <li>Interface de Envio</li>
                         <li>24/7 Suporte Tecnico</li>
                         <li>Sem Acesso a Base De Dados</li>
                         <li class="plan-action">
-                            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Compre ja</a>
+                            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Pagar</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-sm-5 plan price-six wow fadeInDown">
-                    <img src="images/ribon_two.png">
+                    <img src="images/ribon_one.png">
                     <ul>
                         <li class="heading-six">
-                            <h1>Premium+</h1>
-                            <span>600.000 Kzs</span>
+                            <h1>Gold+</h1>
+                            <span>900.000 Kzs</span>
                         </li>
-                        <li>60.000 SMS</li>
-                        <li>10kzs por SMS</li>
+                        <li>100.000 SMS</li>
+                        <li>9kzs por SMS</li>
                         <li>Interface de Envio</li>
                         <li>24/7 Suporte Tecnico</li>
                         <li>Acesso a Base De Dados</li>
                         <li class="plan-action">
-                            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Compre ja</a>
+                            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Pagar</a>
                         </li>
                     </ul>
                 </div>
@@ -243,23 +252,23 @@
             </div>
             <div class="col-sm-6">
                 <ul class="pull-right">
-                    <li><a href="index_logged.php">TelcoSMS</a></li>
-                    <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
-                    <li><a href="contact-us_logged.php">Contactos</a></li>
+                    <li><a href="index.php">TelcoSMS</a></li>
+                    <li><a href="help-support.php">Ajuda e Suporte</a></li>
+                    <li><a href="contact-us.php">Contactos</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </footer><!--/#footer-->
 
-    <script src="js/jquery.js"></script>
-    <script type="text/javascript">
-        $('.carousel').carousel()
-    </script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/wow.min.js"></script>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+    $('.carousel').carousel()
+</script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/jquery.isotope.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/wow.min.js"></script>
 </body>
 </html>

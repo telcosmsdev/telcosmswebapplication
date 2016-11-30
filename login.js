@@ -33,6 +33,8 @@ $('document').ready(function () {
             modalAnimate($formRegister, $formLost);
         });
 
+
+
         function modalAnimate($oldForm, $newForm) {
             var $oldH = $oldForm.height();
             var $newH = $newForm.height();
