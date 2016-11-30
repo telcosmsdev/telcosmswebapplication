@@ -65,19 +65,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index_logged.html">
+                <a class="navbar-brand" href="index_logged.php">
                     <img src="../telcosmswp/images/telcopagelogo.png" alt="logo"></a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li ><a href="index_logged.html">TelcoSMS</a></li>
-                    <li class="active" ><a href="services_logged.html">Serviços</a></li>
-                    <li><a href="tableprices_logged.html">Pacotes</a></li>
+                    <li><a href="index_logged.php">TelcoSMS</a></li>
+                    <li class="active"><a href="services_logged.php">Serviços</a></li>
+                    <li><a href="tableprices_logged.php">Pacotes</a></li>
                     <li><a href="about-us_logged.html">Quem Somos</a></li>
                     <li><a href="contact-us_logged.html">Contactos</a></li>
                     <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
-                    <li><a href="profile.php">Profile</a></li>
+                    <li><a href="profile.php">Perfil</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
             </div>
@@ -100,10 +100,12 @@
                     <div class="feature-wrap">
                         <i class="fa fa-bullhorn"></i>
                         <h2>BULK SMS</h2>
-                        <h3> <p align="justify"> Nunca foi mais fácil interagir com os seus parceiros de negócio,a TelcoSMS apresenta-lhe o serviço que veio para solucionar o seu problema de comunicação.
-                            Através da nossa aplicação de envio de mensagens é possível carregar-se uma lista de contactos e enviar a mensagem desejada para os seus cientes,fornecedores,etc.
+                        <h3><p align="justify"> Nunca foi mais fácil interagir com os seus parceiros de negócio,a
+                            TelcoSMS apresenta-lhe o serviço que veio para solucionar o seu problema de comunicação.
+                            Através da nossa aplicação de envio de mensagens é possível carregar-se uma lista de
+                            contactos e enviar a mensagem desejada para os seus cientes,fornecedores,etc.
                         </h3>
-                        <h2><a href="tableprices_logged.html">saiba mais</a></h2>
+                        <h2><a href="tableprices_logged.php">saiba mais</a></h2>
                     </div>
                 </div><!--/.col-md-4-->
 
@@ -111,12 +113,14 @@
                     <div class="feature-wrap">
                         <i class="fa fa-comments"></i>
                         <h2> SMS Corporativa</h2>
-                        <h3> <p align="justify">
-                            Através de aplicações de envio de mensagens (existentes nos ERP, CRMs, etc…), as empresas poderão de forma
+                        <h3><p align="justify">
+                            Através de aplicações de envio de mensagens (existentes nos ERP, CRMs, etc…), as empresas
+                            poderão de forma
                             fácil e rápida integrar-se a nossa Gateway de mensagens (TelcoRush SMS Gateway)
-                            e enviarem mensagens para os seus clientes ou colaboradores de todas as redes móveis nacionais
+                            e enviarem mensagens para os seus clientes ou colaboradores de todas as redes móveis
+                            nacionais
                             e internacionais.</h3>
-                        <h2><a href="tableprices_logged.html">saiba mais</a></h2>
+                        <h2><a href="tableprices_logged.php">saiba mais</a></h2>
                     </div>
                 </div><!--/.col-md-4-->
 
@@ -124,8 +128,9 @@
                     <div class="feature-wrap">
                         <i class="fa fa-cloud-download"></i>
                         <h2>Email to SmS - SE2S</h2>
-                        <h3><p align="justify"> O serviço E2S (E-mail para SMS) permite o envio de mensagem apartir da aplicação de correio eletrónico corporativo</h3>
-                        <h2><a href="tableprices_logged.html">saiba mais</a></h2>
+                        <h3><p align="justify"> O serviço E2S (E-mail para SMS) permite o envio de mensagem apartir da
+                            aplicação de correio eletrónico corporativo</h3>
+                        <h2><a href="tableprices_logged.php">saiba mais</a></h2>
                     </div>
                 </div><!--/.col-md-4-->
             </div><!--/.services-->
@@ -138,7 +143,7 @@
     <h2>Subscreva os nossos serviços</h2>
     <p class="lead">Escolha o serviço que melhor se adequa as suas necessidades</p>
     <div class="request">
-        <h4><a href="tableprices.html">Pacotes Telco Sms</a></h4>
+        <h4><a href="tableprices.php">Pacotes Telco Sms</a></h4>
     </div>
 </div><!--/.get-started-->
 
@@ -189,7 +194,7 @@
             </div>
             <div class="col-sm-6">
                 <ul class="pull-right">
-                    <li><a href="index_logged.html">TelcoSMS</a></li>
+                    <li><a href="index_logged.php">TelcoSMS</a></li>
                     <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
                     <li><a href="contact-us_logged.html">Contactos</a></li>
                 </ul>
@@ -197,7 +202,6 @@
         </div>
     </div>
 </footer><!--/#footer-->
-
 
 
 <script src="js/jquery.js"></script>

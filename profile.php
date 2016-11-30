@@ -105,15 +105,15 @@ if ($_SESSION['user_session'] != "") {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index_logged.html">
+                <a class="navbar-brand" href="index_logged.php">
                     <img src="../telcosmswp/images/telcopagelogo.png" alt="logo"></a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="index_logged.html">TelcoSMS</a></li>
-                    <li><a href="services_logged.html">Serviços</a></li>
-                    <li><a href="tableprices_logged.html">Pacotes</a></li>
+                    <li><a href="index_logged.php">TelcoSMS</a></li>
+                    <li><a href="services_logged.php">Serviços</a></li>
+                    <li><a href="tableprices_logged.php">Pacotes</a></li>
                     <li><a href="about-us_logged.html">Quem Somos</a></li>
                     <li><a href="contact-us_logged.html">Contactos</a></li>
                     <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>

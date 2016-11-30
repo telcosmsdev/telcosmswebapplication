@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if (isset($_SESSION['user_session'])!="") {
+    header("Location: index_logged.php");
+}
 require_once 'connect_db.php';
 
 
@@ -31,9 +35,7 @@ if (isset($_POST['btn-login'])) {
             header("Location: profile.php");
 
         } else {
-
             echo "<script language='javascript'>\n alert('Utilizador e password invalidos');\n </script>";
-
         }
     } catch (mysqli_sql_exception $e) {
         echo $e->getMessage();
@@ -115,8 +117,8 @@ if (isset($_POST['btn-login'])) {
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.php">TelcoSms</a></li>
-                    <li><a href="services.html">Serviços</a></li>
-                    <li><a href="tableprices.html">Pacotes</a></li>
+                    <li><a href="services.php">Serviços</a></li>
+                    <li><a href="tableprices.php">Pacotes</a></li>
                     <li><a href="about-us.html">Quem Somos</a></li>
                     <li><a href="contact-us.html">Contactos</a></li>
                     <li><a href="help-support.html">Ajuda e Suporte</a></li>

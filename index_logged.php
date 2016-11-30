@@ -64,15 +64,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index_logged.html">
+                <a class="navbar-brand" href="index_logged.php">
                     <img src="../telcosmswp/images/telcopagelogo.png" alt="logo"></a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index_logged.html">TelcoSMS</a></li>
-                    <li ><a href="services_logged.html">Serviços</a></li>
-                    <li><a href="tableprices_logged.html">Pacotes</a></li>
+                    <li class="active"><a href="index_logged.php">TelcoSMS</a></li>
+                    <li ><a href="services_logged.php">Serviços</a></li>
+                    <li><a href="tableprices_logged.php">Pacotes</a></li>
                     <li><a href="about-us_logged.html">Quem Somos</a></li>
                     <li><a href="contact-us_logged.html">Contactos</a></li>
                     <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
@@ -164,7 +164,7 @@
                         Através da nossa aplicação de envio de mensagens é possível carregar-se uma lista de
                         contactos e enviar a mensagem desejada para os seus cientes,fornecedores,etc.
                     </h3>
-                    <h2><a href="tableprices_logged.html">saiba mais</a></h2>
+                    <h2><a href="tableprices_logged.php">saiba mais</a></h2>
                 </div>
             </div><!--/.col-md-4-->
 
@@ -179,7 +179,7 @@
                         e enviarem mensagens para os seus clientes ou colaboradores de todas as redes móveis
                         nacionais
                         e internacionais.</h3>
-                    <h2><a href="tableprices_logged.html">saiba mais</a></h2>
+                    <h2><a href="tableprices_logged.php">saiba mais</a></h2>
                 </div>
             </div><!--/.col-md-4-->
 
@@ -189,7 +189,7 @@
                     <h2>Email to SmS - SE2S</h2>
                     <h3><p align="justify"> O serviço E2S (E-mail para SMS) permite o envio de mensagem apartir da
                         aplicação de correio eletrónico corporativo</h3>
-                    <h2><a href="tableprices_logged.html">saiba mais</a></h2>
+                    <h2><a href="tableprices_logged.php">saiba mais</a></h2>
             </div><!--/.col-md-4-->
         </div><!--/.services-->
     </div><!--/.row-->
@@ -249,7 +249,7 @@
             </div>
             <div class="col-sm-6">
                 <ul class="pull-right">
-                    <li><a href="index_logged.html">TelcoSMS</a></li>
+                    <li><a href="index_logged.php">TelcoSMS</a></li>
                     <li><a href="help-support_logged.html">Ajuda e Suporte</a></li>
                     <li><a href="contact-us_logged.html">Contactos</a></li>
                 </ul>

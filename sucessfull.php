@@ -1,3 +1,49 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user_session'])!="") {
+    header("Location: index_logged.php");
+}
+require_once 'connect_db.php';
+
+
+if (isset($_POST['btn-login'])) {
+//3.1.1 Assigning posted values to variables.
+
+    $username = trim($_POST['login_username']);
+    $username = strip_tags($username);
+    $username = htmlspecialchars($username);
+
+
+    $pass = trim($_POST['login_password']);
+    $pass = strip_tags($pass);
+    $pass = htmlspecialchars($pass);
+
+
+    try {
+//3.1.2 Checking the values are existing in the database or not
+        $password_in = hash('sha256', $pass);
+        $query = "SELECT id_cliente , username , password  FROM `Cliente` WHERE username='$username' AND  password = '$password_in'";
+        $result = mysqli_query($link, $query) or die(mysqli_error($link));
+        $row = mysqli_fetch_array($result);
+        $count = mysqli_num_rows($result);
+
+//3.1.2 If the posted values are equal to the database values, then session will be created for the user.
+
+        if ($count == 1 && $row['password'] == $password_in) {
+            $_SESSION['user_session'] = $row['id_cliente'];
+            header("Location: profile.php");
+
+        } else {
+            echo "<script language='javascript'>\n alert('Utilizador e password invalidos');\n </script>";
+        }
+    } catch (mysqli_sql_exception $e) {
+        echo $e->getMessage();
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,8 +115,8 @@
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">TelcoSMS</a></li>
-                    <li><a href="services.html">Serviços</a></li>
-                    <li><a href="tableprices.html">Pacotes</a></li>
+                    <li><a href="services.php">Serviços</a></li>
+                    <li><a href="tableprices.php">Pacotes</a></li>
                     <li><a href="about-us.html">Quem Somos</a></li>
                     <li><a href="contact-us.html">Contactos</a></li>
                     <li class="active"><a href="sucessfull.php">Registrado</a></li>
