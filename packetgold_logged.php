@@ -102,14 +102,14 @@
             <div id="div-forms">
                 <form id="show_construction" method="post">
                     <div class="modal-body">
-                        <p> UNDER CONSTRUCTION </p>
+                        <p><b> UNDER CONSTRUCTION </b></p>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<!-- BEGIN # MODAL CONSTRUCTION -->
+<!--  # MODAL CONSTRUCTION -->
 
 <section class="pricing-page">
     <div class="container">
@@ -148,6 +148,12 @@
                         <li>Interface de Envio</li>
                         <li>24/7 Suporte Tecnico</li>
                         <li>Acesso a Base De Dados</li>
+                        <li><select class="form-control" name="form_tipo_bd">
+                                <option value=""> Selecionar tipo base de dados</option>
+                                <option value="base_dados"> base de dados corporativas</option>
+                                <option value="meus_contactos"> base de dados universitarias</option>
+                                <option value="import_file"> base de dados TelcoSMS</option>
+                            </select></li>
                         <li class="plan-action">
                             <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>
                         </li>

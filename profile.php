@@ -186,7 +186,7 @@ if ($_SESSION['user_session'] != "") {
                 <div class="form-group">
                     <label>Origem *</label>
                     <input style="height: 40px" type="text"
-                           value=" <?php echo $useRow['cliente_referencia'] ?>"
+                           value=" <?php echo $useRow['cliente_referencia']!= "Standard" ? "Corporate" : "TelcoSMS" ?>"
                            class="form-control" required="required" readonly/>
                 </div>
 
@@ -223,7 +223,7 @@ if ($_SESSION['user_session'] != "") {
                             <option value=""> Selecionar contactos</option>
                             <option value="base_dados"> base de dados</option>
                             <option value="meus_contactos"> meus contactos</option>
-                            <option value="import_file"> importar .xls .txt</option>
+                            <option value="import_file"> importar .xls .csv .txt</option>
                         </select>
 
                         <!--<ul style="float:right" class="dropdown-menu">

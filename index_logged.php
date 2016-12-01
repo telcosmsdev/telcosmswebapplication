@@ -76,7 +76,7 @@
                     <li><a href="about-us_logged.php">Quem Somos</a></li>
                     <li><a href="contact-us_logged.php">Contactos</a></li>
                     <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
-                    <li><a href="profile.php">Profile</a></li>
+                    <li><a href="profile.php">Perfil</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
             </div>
