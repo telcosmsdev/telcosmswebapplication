@@ -36,14 +36,18 @@ if (isset($_POST['register_btn'])) {
     $email = htmlspecialchars($email);
 
 
-    // password encrypt using SHA256();
     $password_encripted = hash('sha256', $password_);
+
+    $cliente_type ='Standard';
+    $cliente_reference ='NULL';
+
+
 
     $name = $name . "  " . $apelido;
 
     try {
-        $query = "INSERT INTO cliente (nome_cliente, username, password, email, telemovel, cliente_referencia) 
-                           VALUES('$name', '$username_','$password_encripted','$email','$telemovel', 'Standard');";
+        $query = "INSERT INTO cliente (nome_cliente, username, password, email, telemovel, cliente_type , cliente_referencia) 
+                           VALUES('$name', '$username_','$password_encripted','$email','$telemovel', '$cliente_type' , '$cliente_reference');";
         $res = mysqli_query($link, $query);
 
         if ($res) {
@@ -63,7 +67,6 @@ if (isset($_POST['register_btn'])) {
             $errMSG = "Something went wrong, try again later...";
 
             echo "Debugging errno: " . mysqli_error($link) . PHP_EOL;
-            //header('Location: http://localhost/telcosmswp/404.html');
 
         }
 

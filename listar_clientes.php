@@ -1,3 +1,52 @@
+<?php
+session_start();
+include_once('/Applications/XAMPP/htdocs/telcosmswp/connect_db.php');
+
+if ($_SESSION['admin_session'] != "") {
+
+    try {
+
+
+        $id_in = $_SESSION['admin_session'];
+
+        //info sobre o admin
+        $query = "SELECT *  FROM `Admin`  WHERE `id_admin` = '$id_in'";
+        $result = mysqli_query($link, $query) or die(mysqli_error($link));
+        $useRow = mysqli_fetch_array($result);
+
+        //echo print_r($useRow);
+
+    } catch (mysqli_sql_exception $e) {
+        $e->getMessage();
+    }
+
+
+    if (isset($_POST['listar_btn'])) {
+
+        echo " vamos listar esta merda toda";
+
+        try {
+
+
+            //info sobre o admin
+            $query_lista = "SELECT *  FROM `Cliente` 
+                      INNER JOIN SmsEnviadas 
+                      ON `Cliente`.`id_cliente` = `SmsEnviadas`.`id_cliente`
+                      INNER JOIN `SmsDisponiveis` 
+                      ON `Cliente`.`id_cliente` = `SmsDisponiveis`. `id_cliente`";
+            $result_lista = mysqli_query($link, $query_lista) or die(mysqli_error($link));
+            $lista = mysqli_fetch_array($result_lista);
+
+            echo print_r($lista);
+
+        } catch (mysqli_sql_exception $l) {
+            $l->getMessage();
+        }
+
+
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +54,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Pacotes | TelcoSms</title>
-
-    <!-- core pricing.html -->
+    <title>Bem-vindo | TelcoSms</title>
+    <link href="css/login_css.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -25,7 +74,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
-
 <body>
 
 <header id="header">
@@ -65,98 +113,68 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index_logged.php">
+                <a class="navbar-brand" href="admin_profile.php">
                     <img src="../telcosmswp/images/telcopagelogo.png" alt="logo"></a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li ><a href="index_logged.php">TelcoSMS</a></li>
-                    <li ><a href="services_logged.php">Serviços</a></li>
-                    <li class="active"><a href="tableprices_logged.php">Pacotes</a></li>
-                    <li><a href="about-us_logged.php">Quem Somos</a></li>
-                    <li><a href="contact-us_logged.php">Contactos</a></li>
-                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
-                    <li><a href="profile.php">Profile</a></li>
+                    <li class="active"><a href="admin_profile.php">Perfil</a></li>
                     <li><a href="logout.php">logout</a></li>
                 </ul>
             </div>
         </div><!--/.container-->
     </nav><!--/nav-->
-
 </header><!--/header-->
 
-<!-- BEGIN # MODAL CONSTRUCTION-->
-<div class="modal fade" id="construct-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true"
-     style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" align="center">
-                <img class="img-circle" id="img_logo" src="images/loginlogo.png">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </div>
 
-            <!-- Begin # DIV Form -->
-            <div id="div-forms">
-                <form id="show_construction" method="post">
-                    <div class="modal-body">
-                        <p><b> UNDER CONSTRUCTION </b></p>
+<div class="container profile">
+    <div class="row">
+        <div class="span12">
+            <div class="well well-small clearfix">
+                <div class="row-fluid">
+                    <div class="span4" align="center">
+                        <h3> Bem.vindo Admnistrador</h3>
+                        <h2><?php echo $useRow['nome_completo'] ?></h2>
+                        </ul>
+                        <div><!--/span6-->
+                        </div><!--/row-->
                     </div>
-                </form>
+                    <!--Body content-->
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!-- BEGIN # MODAL CONSTRUCTION -->
+
 
 <section class="pricing-page">
     <div class="container">
         <div class="center wow fadeInDown">
-            <h2>DETALHES DOS PACOTES STANDARD </h2>
-            <p class="lead">Temos pacotes para todas necessidades e as melhores ofertas do mercado</p>
+            <h2>Bem-vindo ao Painel do Admnistrador</h2>
+            <p class="lead">Selecione as seguintes operaçoes</p>
         </div>
         <div class="pricing-area text-center">
             <div class="row">
-                <div class="col-sm-5  col-sm-offset-1 plan price-one wow fadeInDown">
+                <div class="col-sm-5 col-sm-offset-1 plan price-one wow fadeInDown">
                     <ul>
-                        <li class="heading-one">
-                            <h1>Standard</h1>
-                            <span>240.000 Kzs</span>
-                        </li>
-                        <li>30.000 SMS</li>
-                        <li>8kzs por SMS</li>
-                        <li>Interface de Envio</li>
-                        <li>24/7 Suporte Tecnico</li>
-                        <li>Sem Acesso a Base De Dados</li>
-                        <li class="plan-action">
-                            <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>
-                        </li>
+                        <li class="heading-four">
+                            <form action="criar_cliente.php">
+                                <h1>
+                                    <button class="btn btn-primary" type="submit"> Criar Cliente
+                                </h1>
+                            </form>
                     </ul>
                 </div>
 
-                <div class="col-sm-5  plan price-six wow fadeInDown">
-                    <img src="images/ribon_one.png">
+                <div class="col-sm-5 plan price-six wow fadeInDown">
                     <ul>
-                        <li class="heading-six">
-                            <h1>Standard+</h1>
-                            <span>330.000 Kzs</span>
-                        </li>
-                        <li>30.000 SMS</li>
-                        <li>11kzs por SMS</li>
-                        <li>Interface de Envio</li>
-                        <li>24/7 Suporte Tecnico</li>
-                        <li>Acesso a Base De Dados</li>
-                        <li><select class="form-control" name="form_tipo_bd">
-                                <option value=""> Selecionar tipo base de dados</option>
-                                <option value="base_dados_standard"> base de dados Standard</option>
-                                <option value="base_dados_provincias"> base de dados por Provincias</option>
-                                <option value="base_dados_universitarias"> base de dados Universitarias</option>
-                            </select></li>
-                        <li class="plan-action">
-                            <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>
+                        <li class="heading-four">
+                            <form action="listar_clientes.php" method="post">
+                                <h1>
+                                    <button class="btn btn-primary" name="listar_btn" type="submit"> Listar Clientes
+                                </h1>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -165,13 +183,7 @@
     </div><!--/container-->
 </section><!--/pricing-page-->
 
-<section class="pricing-page">
-    <div class="container">
-        <div class="center wow fadeInDown">
-            <p class="lead"> *O imposto de consumo não está incluído.</p>
-        </div>
-    </div>
-</section>
+
 <footer id="footer" class="midnight-blue">
     <div class="container">
         <div class="row">
@@ -180,9 +192,9 @@
             </div>
             <div class="col-sm-6">
                 <ul class="pull-right">
-                    <li><a href="index_logged.php">TelcoSMS</a></li>
-                    <li><a href="help-support_logged.php">Ajuda e Suporte</a></li>
-                    <li><a href="contact-us_logged.php">Contactos</a></li>
+                    <li><a href="#">TelcoSms</a></li>
+                    <li><a href="help-support.php">Ajuda e Suporte</a></li>
+                    <li><a href="contact-us.php">Contactos</a></li>
                 </ul>
             </div>
         </div>
@@ -190,13 +202,12 @@
 </footer><!--/#footer-->
 
 <script src="js/jquery.js"></script>
-<script type="text/javascript">
-    $('.carousel').carousel()
-</script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/wow.min.js"></script>
+
+
 </body>
 </html>

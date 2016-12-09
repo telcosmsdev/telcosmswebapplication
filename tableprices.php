@@ -42,18 +42,14 @@ if (isset($_POST['btn-login'])) {
     }
 }
 ?>
-
-
-
-
-
-
-<html><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Pacotes | TelcoSms</title>
+    <title>TelcoSMS | Bem-Vindo</title>
 
     <!-- core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -71,8 +67,7 @@ if (isset($_POST['btn-login'])) {
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-</head>
-<body>
+</head><!--/head-->
 
 <header id="header">
     <div class="top-bar">

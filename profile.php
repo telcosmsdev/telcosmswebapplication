@@ -140,7 +140,8 @@ if ($_SESSION['user_session'] != "") {
                         <ul class="unstyled">
                             <li><i class="fa fa-phone"></i> <?php echo $useRow['telemovel'] ?></li>
                             <li><i class="fa fa-inbox"></i> <?php echo $useRow['email'] ?></li>
-                            <li><i class="fa fa-magic"></i> referencia : <?php echo $useRow['cliente_referencia'] ?>
+                            <li><i class="fa fa-magic"></i> tipo de cliente : <?php echo $useRow['cliente_type'] ?>
+                            <li><i class="fa fa-magic"></i> referencia : <?php echo $useRow['cliente_referencia']!= "NULL" ? $useRow['cliente_referencia'] : "" ?>
                             </li>
                             <li><i class="fa fa-edit"></i><a href="edit.php"> edit profile</a></li>
                         </ul>
@@ -186,7 +187,7 @@ if ($_SESSION['user_session'] != "") {
                 <div class="form-group">
                     <label>Origem *</label>
                     <input style="height: 40px" type="text"
-                           value=" <?php echo $useRow['cliente_referencia']!= "Standard" ? "Corporate" : "TelcoSMS" ?>"
+                           value=" <?php echo $useRow['cliente_referencia']!= "NULL" ? $useRow['cliente_referencia'] : "TelcoSMS" ?>"
                            class="form-control" required="required" readonly/>
                 </div>
 
@@ -225,14 +226,6 @@ if ($_SESSION['user_session'] != "") {
                             <option value="meus_contactos"> meus contactos</option>
                             <option value="import_file"> importar .xls .csv .txt</option>
                         </select>
-
-                        <!--<ul style="float:right" class="dropdown-menu">
-                            <selec>
-                            <li><a href="#" id="base_dados_select" type="submit">base de dados</a></li>
-                            <li><a id="meus_contactos_select" type="submit">meus contactos</a></li>
-                            <li><a href="#" id="import_file" type="submit">importar ficheiro .xls .txt</a>
-                            </li>
-                        </ul>-->
                     </button>
                 </div>
             </div>

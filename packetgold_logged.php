@@ -118,8 +118,8 @@
             <p class="lead">Temos pacotes para todas necessidades e as melhores ofertas do mercado</p>
         </div>
         <div class="pricing-area text-center">
-            <div class="row">
-                <div class="col-sm-5 col-sm-offset-1 plan price-one wow fadeInDown">
+                <div class="row">
+                    <div class="col-sm-5 col-sm-offset-1 plan price-one wow fadeInDown">
                     <ul>
                         <li class="heading-one">
                             <h1>Gold</h1>
@@ -150,9 +150,9 @@
                         <li>Acesso a Base De Dados</li>
                         <li><select class="form-control" name="form_tipo_bd">
                                 <option value=""> Selecionar tipo base de dados</option>
-                                <option value="base_dados"> base de dados corporativas</option>
-                                <option value="meus_contactos"> base de dados universitarias</option>
-                                <option value="import_file"> base de dados TelcoSMS</option>
+                                <option value="base_dados_standard"> base de dados Standard</option>
+                                <option value="base_dados_provincias"> base de dados por Provincias</option>
+                                <option value="base_dados_universitarias"> base de dados Universitarias</option>
                             </select></li>
                         <li class="plan-action">
                             <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>

@@ -28,15 +28,6 @@ if (isset($_POST['btn-login'])) {
 
         if ($count == 1 && $row['password'] == $password_in) {
 
-            //print_r($_POST);
-            /*$_SESSION['login_username'] = $username;
-              $_SESSION['nome_cliente'] = $row['nome_cliente'];
-              $_SESSION['id_cliente'] = $row['id_cliente'];
-              $_SESSION['email'] = $row['email'];
-              $_SESSION['telemovel'] = $row['telemovel'];
-              $_SESSION['cliente_ref'] = "xasxaasxa";
-
-              header('Location: http://localhost/telcosmswp/profile.html');*/
             $return_arr["status"] = '1';
             $return_arr["message"] = 'logged';
             $json = json_encode($return_arr);
