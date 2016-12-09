@@ -18,6 +18,9 @@ if ($_SESSION['admin_session'] != "") {
     } catch (mysqli_sql_exception $e) {
         $e->getMessage();
     }
+
+
+
 }
 ?>
 <!DOCTYPE html>

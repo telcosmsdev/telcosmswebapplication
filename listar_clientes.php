@@ -23,29 +23,89 @@ if ($_SESSION['admin_session'] != "") {
 
     if (isset($_POST['listar_btn'])) {
 
-        echo " vamos listar esta merda toda";
 
-        try {
+    }
 
 
-            //info sobre o admin
-            $query_lista = "SELECT *  FROM `Cliente` 
+}
+
+
+function getClientesInfo()
+{
+
+
+    try {
+
+        $link = mysqli_connect("localhost", "root", "", "telco_sms_db");
+
+        if (!$link) {
+            echo "Error: Unable to connect to MySQL." . PHP_EOL;
+            echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+            echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+            exit;
+        }
+
+        //info sobre o admin
+        $query_lista = "SELECT *  FROM `Cliente` 
                       INNER JOIN SmsEnviadas 
                       ON `Cliente`.`id_cliente` = `SmsEnviadas`.`id_cliente`
                       INNER JOIN `SmsDisponiveis` 
                       ON `Cliente`.`id_cliente` = `SmsDisponiveis`. `id_cliente`";
-            $result_lista = mysqli_query($link, $query_lista) or die(mysqli_error($link));
-            $lista = mysqli_fetch_array($result_lista);
+        $result_lista = mysqli_query($link, $query_lista) or die(mysqli_error($link));
 
-            echo print_r($lista);
 
-        } catch (mysqli_sql_exception $l) {
-            $l->getMessage();
+        $lista = array();
+        while ($object = mysqli_fetch_object($result_lista)) {
+
+            $lista[] = $object;
         }
 
 
+    } catch (mysqli_sql_exception $l) {
+        $l->getMessage();
     }
+    mysqli_close($link);
+    return $lista;
+
+
 }
+
+function buildTableClientes()
+{
+
+    $table_str = '<table id="clientes_table">';
+    $clientes = getClientesInfo();
+
+    $table_str .= '<tr>';
+    $table_str .= '<th>id</th> 
+                    <th>Nome Completo</th>
+                   <th>Username</th>
+                    <th>Email</th>
+                   <th>Telefone</th>
+                   <th>Tipo Cliente</th> 
+                   <th>Referencia</th>';
+    $table_str .= '</tr>';
+    foreach ($clientes as $cliente) {
+
+
+        $table_str .= '<tr>';
+        $table_str .=
+            '<td>' . $cliente->id_cliente . '</td>
+             <td>' . $cliente->nome_cliente . '</td>
+             <td>' . $cliente->username . '</td>
+             <td>' . $cliente->email . '</td>
+             <td>' . $cliente->telemovel . '</td>
+             <td>' . $cliente->cliente_type . '</td>
+             <td>' . $cliente->cliente_referencia . '</td>';
+        $table_str .= '</tr>';
+
+    }
+    $table_str .= '</table>';
+    return $table_str;
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +122,19 @@ if ($_SESSION['admin_session'] != "") {
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+    <style type="text/css">
+        #clientes_table {
+            margin: 0 auto;
+            border: 1px solid lightgray;
+            border-collapse: collapse;
+        }
+
+        #clientes_table td, th {
+
+            border: 1px solid lightgray;
+
+        }
+    </style>
 
 
     <!--[if lt IE 9]>
@@ -183,6 +256,13 @@ if ($_SESSION['admin_session'] != "") {
     </div><!--/container-->
 </section><!--/pricing-page-->
 
+<section class="panel-body">
+    <?php
+
+    echo buildTableClientes();
+
+    ?>
+</section>
 
 <footer id="footer" class="midnight-blue">
     <div class="container">
