@@ -152,7 +152,7 @@ function buildTableClientes()
     $table_str .= '</tr>';
     foreach ($clientes as $cliente) {
 
-
+        $stylex = '';
 
         if ($i % 2 == 0) {
             $stylex = 'row_even';
@@ -161,7 +161,7 @@ function buildTableClientes()
         }
         $table_str .= '<tr class="'.$stylex.'" >';
         $table_str .=
-            '<td><input type="checkbox" id = "delete_cliente" value= "'.$cliente->id_cliente.'"> </td>
+            '<td><input type="checkbox" id = "delete_cliente" value= "$cliente->id_cliente"> </td>
             <td>' . $cliente->id_cliente . '</td>
              <td>' . $cliente->nome_cliente . '</td>
              <td>' . $cliente->username . '</td>
@@ -171,8 +171,8 @@ function buildTableClientes()
              <td>' . checkReferenceCliente($cliente->cliente_referencia) . '</td>
              <td>' . $cliente->n_sms_disponiveis . '</td>
              <td>' . $cliente->n_sms_enviadas . '</td>
-             <td> <a href =listar_contactos.php?id='.$cliente->id_cliente.'> '. getTotalContactosCliente($cliente->id_cliente) . '</a></td>
-            <td> <a href =pacotes_comprados.php?id='.$cliente->id_cliente.'> '. getTotalPacotes($cliente->id_cliente) . '</a></td>';
+             <td> <a href = contactos_table.php >' . getTotalContactosCliente($cliente->id_cliente) . '</a></td>
+             <td> <a href = pacotes_comprados_table.php >' . getTotalPacotes($cliente->id_cliente) . '</a></td>';
 
         $table_str .= ' </tr > ';
         $i++;
