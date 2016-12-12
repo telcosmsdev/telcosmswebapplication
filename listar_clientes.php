@@ -162,17 +162,17 @@ function buildTableClientes()
         $table_str .= '<tr class="'.$stylex.'" >';
         $table_str .=
             '<td><input type="checkbox" id = "delete_cliente" value= "'.$cliente->id_cliente.'"> </td>
-            <td>' . $cliente->id_cliente . '</td>
-             <td>' . $cliente->nome_cliente . '</td>
-             <td>' . $cliente->username . '</td>
-             <td>' . $cliente->email . '</td>
-             <td>' . $cliente->telemovel . '</td>
-             <td>' . $cliente->cliente_type . '</td>
-             <td>' . checkReferenceCliente($cliente->cliente_referencia) . '</td>
-             <td>' . $cliente->n_sms_disponiveis . '</td>
-             <td>' . $cliente->n_sms_enviadas . '</td>
-             <td> <a href =listar_contactos.php?id='.$cliente->id_cliente.'> '. getTotalContactosCliente($cliente->id_cliente) . '</a></td>
-            <td> <a href =pacotes_comprados.php?id='.$cliente->id_cliente.'> '. getTotalPacotes($cliente->id_cliente) . '</a></td>';
+              <td class="table_text_center">' . $cliente->id_cliente . '</td>
+              <td class="table_text_center">' . $cliente->nome_cliente . '</td>
+              <td class="table_text_center">' . $cliente->username . '</td>
+              <td class="table_text_center">' . $cliente->email . '</td>
+              <td class="table_text_center">' . $cliente->telemovel . '</td>
+              <td class="table_text_center">' . $cliente->cliente_type . '</td>
+              <td class="table_text_center">' . checkReferenceCliente($cliente->cliente_referencia) . '</td>
+              <td class="table_text_center">' . $cliente->n_sms_disponiveis . '</td>
+              <td class="table_text_center">' . $cliente->n_sms_enviadas . '</td>
+              <td class="table_text_center"> <a href =listar_contactos.php?id='.$cliente->id_cliente.'> '. getTotalContactosCliente($cliente->id_cliente) . '</a></td>
+             <td class="table_text_center"> <a href =listar_pacotes_comprados.php?id='.$cliente->id_cliente.'> '. getTotalPacotes($cliente->id_cliente) . '</a></td>';
 
         $table_str .= ' </tr > ';
         $i++;
@@ -226,6 +226,9 @@ function buildTableClientes()
         .row_even {
             background-color: #ffe6ff;
 
+        }
+        .table_text_center {
+            text-align: center;
         }
     </style>
 
@@ -349,7 +352,34 @@ function buildTableClientes()
     </div><!--/container-->
 </section><!--/pricing-page-->
 
+
+<!-- BEGIN # MODAL CONSTRUCTION-->
+<div class="modal fade" id="construct-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true"
+     style="display: none;">
+    <div class="modal-dialog center">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <img class="img-circle" id="img_logo" src="images/loginlogo.png">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <!-- Begin # DIV Form -->
+            <div id="div-forms">
+                <form id="show_construction" method="post">
+                    <div class="modal-body">
+                        <p><b> UNDER CONSTRUCTION </b></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <section class="panel-body">
+    <div class="center wow fadeInDown">
     <?php
 
     echo buildTableClientes();
@@ -357,10 +387,13 @@ function buildTableClientes()
     ?>
     <form action="eliminar_clientes.php" method="post">
         <h1>
-            <button style="float: right" class="btn btn-primary" name="eliminar_btn" type="submit"> Eliminar cliente
+
+
+            <button href="#" data-toggle="modal" data-target="#construct-modal" style="float: right" class="btn btn-primary" name="eliminar_btn" type="submit"> Eliminar cliente
                 selecionado
         </h1>
     </form>
+        </div>
 </section>
 
 <footer id="footer" class="midnight-blue">

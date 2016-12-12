@@ -155,7 +155,7 @@
                                 <option value="base_dados_universitarias"> base de dados Universitarias</option>
                             </select></li>
                         <li class="plan-action">
-                            <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>
+                                <a href="#" data-toggle="modal" data-target="#construct-modal" class="btn btn-primary">Pagar</a>
                         </li>
                     </ul>
                 </div>

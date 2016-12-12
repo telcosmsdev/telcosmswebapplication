@@ -22,7 +22,7 @@ if ($_SESSION['admin_session'] != "") {
 }
 
 
-function getContactosCliente()
+function getPacotesCliente()
 {
 
 
@@ -38,13 +38,17 @@ function getContactosCliente()
         }
 
         //info sobre o admin
-        $query_lista = "SELECT  *  FROM `ContactosCliente`  
-                      where id_cliente ='$_GET[id]'";
-        $result_lista = mysqli_query($link, $query_lista) or die(mysqli_error($link));
+        $query_lista_pacotes = "select *  from `Compra` 
+                        INNER JOIN `Pacotes` 
+                        ON Compra.id_pacote = Pacotes.id_pacote
+                        INNER JOIN `Cliente` 
+                        ON Compra.id_cliente = Cliente.id_cliente
+                        WHERE Compra.id_cliente = '$_GET[id]'";
+        $result_lista_pacotes = mysqli_query($link, $query_lista_pacotes) or die(mysqli_error($link));
 
 
         $lista = array();
-        while ($object = mysqli_fetch_object($result_lista)) {
+        while ($object = mysqli_fetch_object($result_lista_pacotes)) {
 
             $lista[] = $object;
         }
@@ -64,15 +68,20 @@ function buildTableClientes()
 {
 
     $table_str = '<table id="clientes_table">';
-    $contactos = getContactosCliente();
+    $pacotes = getPacotesCliente();
     $i = 1;
     $table_str .= '<tr class="head_table">';
     $table_str .= '    
-                   <th>id</th> 
-                   <th>id do cliente</th>
-                   <th>numero de telemovel</th>';
+                   <th class="table_text_center">id</th> 
+                   <th class="table_text_center">id do cliente</th>
+                   <th class="table_text_center">nome do cliente</th>
+                   <th class="table_text_center">numero de telemovel</th>
+                   <th class="table_text_center">tipo de pacote</th>
+                   <th class="table_text_center">referencia pagamento</th>
+                   <th class="table_text_center">estado da compra</th>
+                   <th class="table_text_center">data compra</th>';
     $table_str .= '</tr>';
-    foreach ($contactos as $contacto) {
+    foreach ($pacotes as $pacote) {
 
         $stylex = '';
 
@@ -84,9 +93,14 @@ function buildTableClientes()
         $table_str .= '<tr class="' . $stylex . '" >';
         $table_str .=
 
-            '<td class="table_text_center">' . $contacto->id_contactos_cliente . '</td>
-            <td class="table_text_center">' . $contacto->id_cliente . '</td>
-             <td class="table_text_center">' . $contacto->n_telemovel . '</td>';
+            '<td class="table_text_center">' . $pacote->id_compra . '</td>
+            <td class="table_text_center">' . $pacote->id_cliente . '</td>
+             <td class="table_text_center">' . $pacote->nome_cliente . '</td>
+             <td class="table_text_center">' . $pacote->telemovel . '</td>
+            <td class="table_text_center">' . $pacote->nome_pacote . '</td>
+            <td class="table_text_center">' . $pacote->referencia_pagamento . '</td>
+            <td class="table_text_center">' . $pacote->estado_compra . '</td>
+             <td class="table_text_center">' . $pacote->data_compra . '</td>';
 
         $table_str .= ' </tr > ';
         $i++;
@@ -141,6 +155,7 @@ function buildTableClientes()
             background-color: #ffe6ff;
 
         }
+
         .table_text_center {
             text-align: center;
         }
