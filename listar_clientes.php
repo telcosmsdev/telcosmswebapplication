@@ -30,6 +30,42 @@ if ($_SESSION['admin_session'] != "") {
 }
 
 
+
+function deleteCliente($id_cliente)
+{
+    $result = false;
+
+    try {
+
+        $link = mysqli_connect("localhost", "root", "", "telco_sms_db");
+
+        if (!$link) {
+            echo "Error: Unable to connect to MySQL." . PHP_EOL;
+            echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+            echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+            exit;
+        }
+
+        //info sobre o admin
+        $query_lista = "DELETE FROM `Cliente` 
+                      WHERE `Cliente`.`id_cliente` = $id_cliente";
+        if(mysqli_query($link, $query_lista)) {
+            $result = true;
+        }
+
+    } catch (mysqli_sql_exception $l) {
+        $l->getMessage();
+    }
+    mysqli_close($link);
+
+    if ($result != false ){
+        header("Location: listar_clientes.php") ;
+
+    }
+
+}
+
+
 function getClientesInfo()
 {
 
@@ -133,7 +169,9 @@ function checkReferenceCliente($reference)
 function buildTableClientes()
 {
 
-    $table_str = '<table id="clientes_table">';
+    $table_str = '<form  action= "eliminar_clientes.php" method="post">';
+    $table_str .= '<table id="clientes_table">';
+
     $clientes = getClientesInfo();
     $i = 1;
     $table_str .= '<tr class="head_table">';
@@ -150,8 +188,9 @@ function buildTableClientes()
                    <th>Total Contactos</th>
                    <th>Pacotes Comprados</th>';
     $table_str .= '</tr>';
-    foreach ($clientes as $cliente) {
 
+
+    foreach ($clientes as $cliente) {
 
 
         if ($i % 2 == 0) {
@@ -159,9 +198,10 @@ function buildTableClientes()
         } else {
             $stylex = 'row_odd';
         }
-        $table_str .= '<tr class="'.$stylex.'" >';
+        $table_str .= '<tr class="' . $stylex . '" >';
         $table_str .=
-            '<td><input type="checkbox" id = "delete_cliente" value= "'.$cliente->id_cliente.'"> </td>
+
+            '<td><input type="checkbox" name = "delete_cliente[]" value= "' . $cliente->id_cliente . '"> </td>
               <td class="table_text_center">' . $cliente->id_cliente . '</td>
               <td class="table_text_center">' . $cliente->nome_cliente . '</td>
               <td class="table_text_center">' . $cliente->username . '</td>
@@ -171,14 +211,19 @@ function buildTableClientes()
               <td class="table_text_center">' . checkReferenceCliente($cliente->cliente_referencia) . '</td>
               <td class="table_text_center">' . $cliente->n_sms_disponiveis . '</td>
               <td class="table_text_center">' . $cliente->n_sms_enviadas . '</td>
-              <td class="table_text_center"> <a href =listar_contactos.php?id='.$cliente->id_cliente.'> '. getTotalContactosCliente($cliente->id_cliente) . '</a></td>
-             <td class="table_text_center"> <a href =listar_pacotes_comprados.php?id='.$cliente->id_cliente.'> '. getTotalPacotes($cliente->id_cliente) . '</a></td>';
+              <td class="table_text_center"> <a href =listar_contactos.php?id=' . $cliente->id_cliente . '> ' . getTotalContactosCliente($cliente->id_cliente) . '</a></td>
+             <td class="table_text_center"> <a href =listar_pacotes_comprados.php?id=' . $cliente->id_cliente . '> ' . getTotalPacotes($cliente->id_cliente) . '</a></td>';
 
         $table_str .= ' </tr > ';
         $i++;
 
     }
+
+
     $table_str .= '</table > ';
+    $table_str .= '<button style="float: right" class="btn btn-primary" 
+                  name="eliminar_btn" type="submit"> Eliminar cliente
+                selecionado </button> </form>';
     return $table_str;
 
 }
@@ -200,6 +245,10 @@ function buildTableClientes()
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+
+    </div>
+
+
     <style type="text/css">
         #clientes_table {
             margin: 0 auto;
@@ -227,6 +276,7 @@ function buildTableClientes()
             background-color: #ffe6ff;
 
         }
+
         .table_text_center {
             text-align: center;
         }
@@ -236,6 +286,7 @@ function buildTableClientes()
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
+
     <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
@@ -353,47 +404,14 @@ function buildTableClientes()
 </section><!--/pricing-page-->
 
 
-<!-- BEGIN # MODAL CONSTRUCTION-->
-<div class="modal fade" id="construct-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true"
-     style="display: none;">
-    <div class="modal-dialog center">
-        <div class="modal-content">
-            <div class="modal-header" align="center">
-                <img class="img-circle" id="img_logo" src="images/loginlogo.png">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </div>
-
-            <!-- Begin # DIV Form -->
-            <div id="div-forms">
-                <form id="show_construction" method="post">
-                    <div class="modal-body">
-                        <p><b> UNDER CONSTRUCTION </b></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <section class="panel-body">
     <div class="center wow fadeInDown">
-    <?php
+        <?php
 
-    echo buildTableClientes();
+        echo buildTableClientes();
 
-    ?>
-    <form action="eliminar_clientes.php" method="post">
-        <h1>
+        ?>
 
-
-            <button href="#" data-toggle="modal" data-target="#construct-modal" style="float: right" class="btn btn-primary" name="eliminar_btn" type="submit"> Eliminar cliente
-                selecionado
-        </h1>
-    </form>
-        </div>
 </section>
 
 <footer id="footer" class="midnight-blue">

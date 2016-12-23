@@ -35,7 +35,7 @@ if (isset($_POST['btn-login'])) {
             header("Location: profile.php");
 
         } else {
-            echo "<script language='javascript'>\n alert('Utilizador e password invalidos');\n </script>";
+            echo "<script language='javascript'> alert('Utilizador e password invalidos'); </script>";
         }
     } catch (mysqli_sql_exception $e) {
         echo $e->getMessage();

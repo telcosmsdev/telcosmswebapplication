@@ -107,7 +107,7 @@ if (isset($_POST['criar_admin_btn'])) {
 
         if ($res) {
 
-            header('Location: http://localhost/telcosmswp/sucessfull.php');
+            header('Location: http://localhost/telcosmswp/sucessfull_admin.php');
 
             unset($name);
             unset($email);
